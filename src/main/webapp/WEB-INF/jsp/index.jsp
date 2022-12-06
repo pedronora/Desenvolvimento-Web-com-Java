@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetShop - Cuidando do seu amigo!</title>
-</head>
-<body>
-    <p>Pedro Henrique Macedo Nora</p>
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>PetShop - Gestão</title>
+    </head>
+
+    <body>
+        <div class="container mt-3">
+            <h2>Pedro Nora</h2>
+        </div>
+    </body>
+
+    </html>
