@@ -2,13 +2,13 @@ package br.edu.infnet.petshop.model.domain;
 
 public class Consulta extends Servico {
     private boolean plantao;
-    private String descricao;
+    private String diagnostico;
     private String receita;
 
     public Consulta(String nome, float preco, int tempoMinutos, boolean plantao, String descricao, String receita) {
         super(nome, preco, tempoMinutos);
         this.plantao = plantao;
-        this.descricao = descricao;
+        this.diagnostico = descricao;
         this.receita = receita;
     }
 
@@ -21,12 +21,12 @@ public class Consulta extends Servico {
         this.plantao = plantao;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDiagnostico() {
+        return diagnostico;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDiagnostico(String descricao) {
+        this.diagnostico = descricao;
     }
 
     public String getReceita() {
@@ -48,7 +48,7 @@ public class Consulta extends Servico {
         sb.append(";");
         sb.append(plantao ? "Plantão" : "Normal");
         sb.append(";");
-        sb.append(descricao);
+        sb.append(diagnostico);
         sb.append(";");
         sb.append(receita);
         sb.append(";");
