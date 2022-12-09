@@ -64,5 +64,9 @@ public class Atendimento {
         System.out.println("\n\tPedido: " + this);
         System.out.println("\tPet: " + this.pet);
         System.out.println("\tQtd de Serviços: " + servicos.size());
+        System.out.println("\tServiços:");
+        for (Servico servico : servicos) {
+            System.out.println("\t\t- " + servico.getNome());
+        }
     }
 }

@@ -25,7 +25,7 @@ public class AtendimentoTest {
         }
 
         try {
-            Vacina v1 = new Vacina("V10", 20, 15, "Obrigatória", "VanguardPlus", 100);
+            Vacina v1 = new Vacina("Vacina - V10", 20, 15, "Obrigatória", "VanguardPlus", 100);
             v1.setPrecoVacina(99.99f);
             servicos2.add(v1);
             servicos3.add(v1);
