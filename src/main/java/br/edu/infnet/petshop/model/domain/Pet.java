@@ -1,5 +1,7 @@
 package br.edu.infnet.petshop.model.domain;
 
+import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
+
 public class Pet {
     private String nome;
     private String dataNasc;
@@ -8,10 +10,11 @@ public class Pet {
     private char genero;
     private boolean castrado;
 
-    public Pet(String nome, String dataNasc, String especie, String raca, char genero, boolean castrado) {
-        checkParameter(nome);
-        checkParameter(especie);
-        checkParameter(raca);
+    public Pet(String nome, String dataNasc, String especie, String raca, char genero, boolean castrado)
+            throws InvalidFieldException {
+        checkParameter(nome, "nome");
+        checkParameter(especie, "especie");
+        checkParameter(raca, "raca");
         this.nome = nome;
         this.dataNasc = dataNasc;
         this.especie = especie;
@@ -53,9 +56,9 @@ public class Pet {
         return castrado;
     }
 
-    public void checkParameter(String field) {
+    public void checkParameter(String field, String attr) throws InvalidFieldException {
         if (field == null || field.isBlank()) {
-            throw new IllegalArgumentException("campo não pode ser nulo ou em branco");
+            throw new InvalidFieldException("O campo [" + attr + "] não pode ser nulo/branco.");
         }
     }
 

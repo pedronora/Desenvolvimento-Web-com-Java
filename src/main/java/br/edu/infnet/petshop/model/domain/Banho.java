@@ -1,12 +1,16 @@
 package br.edu.infnet.petshop.model.domain;
 
+import br.edu.infnet.petshop.model.exceptions.IllegalMinutesServiceException;
+import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
+import br.edu.infnet.petshop.model.exceptions.NoPriceException;
+
 public class Banho extends Servico {
     private boolean hidratarPelo;
     private boolean cortarUnhas;
     private boolean escovarDentes;
 
     public Banho(String nome, float preco, int tempoMinutos, boolean hidratarPelo, boolean cortarHunhas,
-            boolean escovarDentes) {
+            boolean escovarDentes) throws InvalidFieldException, NoPriceException, IllegalMinutesServiceException {
         super(nome, preco, tempoMinutos);
         this.hidratarPelo = hidratarPelo;
         this.cortarUnhas = cortarHunhas;

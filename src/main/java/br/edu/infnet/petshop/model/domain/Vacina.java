@@ -1,11 +1,16 @@
 package br.edu.infnet.petshop.model.domain;
 
+import br.edu.infnet.petshop.model.exceptions.IllegalMinutesServiceException;
+import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
+import br.edu.infnet.petshop.model.exceptions.NoPriceException;
+
 public class Vacina extends Servico {
     private String tipo;
     private String marca;
     private float precoVacina;
 
-    public Vacina(String nome, float preco, int tempoMinutos, String tipo, String marca, float precoVacina) {
+    public Vacina(String nome, float preco, int tempoMinutos, String tipo, String marca, float precoVacina)
+            throws InvalidFieldException, NoPriceException, IllegalMinutesServiceException {
         super(nome, preco, tempoMinutos);
         this.tipo = tipo;
         this.marca = marca;
@@ -28,7 +33,6 @@ public class Vacina extends Servico {
         this.marca = marca;
     }
 
-
     public float getPrecoVacina() {
         return precoVacina;
     }
@@ -38,8 +42,11 @@ public class Vacina extends Servico {
     }
 
     @Override
-    public float calcularValorAtendimento() {
-        return this.getPreco() + this.getPrecoVacina();
+    public float calcularValorAtendimento() throws NoPriceException {
+        if (this.precoVacina <= 0) {
+            throw new NoPriceException("O preço da vacina não pode ser igual ou menor que zero.");
+        }
+        return this.getPreco() + this.precoVacina;
     }
 
     @Override
@@ -52,7 +59,11 @@ public class Vacina extends Servico {
         sb.append(";");
         sb.append(precoVacina);
         sb.append(";");
-        sb.append("Valor total da Vacina: R$ " + this.calcularValorAtendimento());
+        try {
+            sb.append("Valor total da Vacina: R$ " + this.calcularValorAtendimento());
+        } catch (NoPriceException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
         return super.toString() + sb.toString();
     }
 }

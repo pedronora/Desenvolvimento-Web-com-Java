@@ -59,4 +59,10 @@ public class Atendimento {
                 descricao,
                 emergencia ? "Emergência" : "Normal");
     }
+
+    public void imprimir() {
+        System.out.println("\n\tPedido: " + this);
+        System.out.println("\tPet: " + this.pet);
+        System.out.println("\tQtd de Serviços: " + servicos.size());
+    }
 }
