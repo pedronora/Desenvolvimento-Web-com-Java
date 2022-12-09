@@ -12,7 +12,6 @@ public class Consulta extends Servico {
         this.receita = receita;
     }
 
-
     public boolean isPlantao() {
         return plantao;
     }
@@ -39,7 +38,7 @@ public class Consulta extends Servico {
 
     @Override
     public float calcularValorAtendimento() {
-        return plantao ? (this.getPreco() + 100) : (this.getPreco() + 50);
+        return plantao ? (this.getPreco() + 75) : (this.getPreco());
     }
 
     @Override
