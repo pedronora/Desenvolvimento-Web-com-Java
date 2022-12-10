@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.infnet.petshop.model.domain.*;
-import br.edu.infnet.petshop.model.exceptions.IllegalMinutesServiceException;
-import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
-import br.edu.infnet.petshop.model.exceptions.NoPriceException;
+import br.edu.infnet.petshop.model.exceptions.*;
 
 public class AtendimentoTest {
     public static void main(String[] args) {
