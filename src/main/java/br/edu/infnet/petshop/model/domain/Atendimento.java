@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import br.edu.infnet.petshop.model.exceptions.AtendimentoSemPetException;
+import br.edu.infnet.petshop.model.exceptions.AtendimentoSemServicosException;
+
 public class Atendimento {
     private LocalDateTime data;
     private String descricao;
@@ -11,8 +14,16 @@ public class Atendimento {
     private Pet pet;
     private List<Servico> servicos;
 
-    public Atendimento() {
+    public Atendimento(Pet pet, List<Servico> servicos) throws AtendimentoSemPetException, AtendimentoSemServicosException {
+        if (pet == null) {
+            throw new AtendimentoSemPetException("Não existe Pet associada ao Atendimento.");
+        }
+        if (servicos == null) {
+            throw new AtendimentoSemServicosException("Não existem Serviços associados ao Atendimento.");
+        }
         this.data = LocalDateTime.now();
+        this.pet = pet;
+        this.servicos = servicos;
     }
 
     public LocalDateTime getData() {
@@ -39,16 +50,8 @@ public class Atendimento {
         return pet;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
     public List<Servico> getServicos() {
         return servicos;
-    }
-
-    public void setServicos(List<Servico> servicos) {
-        this.servicos = servicos;
     }
 
     @Override
