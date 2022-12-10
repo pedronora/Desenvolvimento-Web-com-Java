@@ -69,7 +69,7 @@ public class Pet {
         sb.append(dataNasc + ";");
         sb.append(especie + ";");
         sb.append(raca + ";");
-        sb.append((genero == 'M') ? "Macho" : "Fêmea" + ";");
+        sb.append((genero == 'M') ? "Macho;" : "Fêmea;");
         sb.append(castrado ? "Castrado" : "Não castrado");
         return sb.toString();
     }
