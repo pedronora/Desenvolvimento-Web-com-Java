@@ -1,0 +1,4 @@
+A;Lua;25/04/2021;Cachorro;SRD;F;true;Primeiro Atendimento;True
+B;Banho;20;60;false;true;false
+C;Consulta;120.0;30;false;Inflamação cutânea;Antiinflamatório em spray
+V;V10;20;15;Obrigatória;VanguardPlus;100

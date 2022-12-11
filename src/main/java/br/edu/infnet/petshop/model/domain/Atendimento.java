@@ -14,7 +14,8 @@ public class Atendimento {
     private Pet pet;
     private List<Servico> servicos;
 
-    public Atendimento(Pet pet, List<Servico> servicos) throws AtendimentoSemPetException, AtendimentoSemServicosException {
+    public Atendimento(Pet pet, List<Servico> servicos)
+            throws AtendimentoSemPetException, AtendimentoSemServicosException {
         if (pet == null) {
             throw new AtendimentoSemPetException("Não existe Pet associada ao Atendimento.");
         }
@@ -71,5 +72,13 @@ public class Atendimento {
         for (Servico servico : servicos) {
             System.out.println("\t\t- " + servico.getNome());
         }
+    }
+
+    public String obterLinha() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+        return this.getData().format(formatter) + ";" +
+                this.getDescricao() + ";" +
+                this.getPet() + ";" +
+                this.getServicos().size() + "\r\n";
     }
 }
