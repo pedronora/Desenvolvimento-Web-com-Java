@@ -11,7 +11,9 @@ public class AtendimentoTest {
         List<Servico> servicos1 = new ArrayList<Servico>();
         List<Servico> servicos2 = new ArrayList<Servico>();
         List<Servico> servicos3 = new ArrayList<Servico>();
+        List<Servico> servicos4 = new ArrayList<Servico>(); // Lista vazia
 
+        // Serviços
         try {
             Banho b1 = new Banho("Banho", 55.9f, 60, false, true, false);
             b1.setHidratarPelo(true);
@@ -40,6 +42,7 @@ public class AtendimentoTest {
             System.out.println("Erro: " + e.getMessage());
         }
 
+        // Atendimentos
         try {
             Pet p1 = new Pet("Lua", "25/04/2021", "Cachorro", "SRD", 'F', true);
 
@@ -69,6 +72,17 @@ public class AtendimentoTest {
             a3.setDescricao("Terceiro atendimento");
             a3.setEmergencia(false);
             a3.imprimir();
+        } catch (InvalidFieldException | AtendimentoSemPetException | AtendimentoSemServicosException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        try {
+            Pet p4 = new Pet("Teddy", "14/07/2002", "Cachorro", "Poodle", 'M', true);
+
+            Atendimento a4 = new Atendimento(p4, servicos4);
+            a4.setDescricao("Terceiro atendimento");
+            a4.setEmergencia(false);
+            a4.imprimir();
         } catch (InvalidFieldException | AtendimentoSemPetException | AtendimentoSemServicosException e) {
             System.out.println("Erro: " + e.getMessage());
         }
