@@ -10,7 +10,7 @@ public abstract class Servico {
     private int tempoMinutos;
 
     public Servico(String nome, float preco, int tempoMinutos) throws InvalidFieldException, NoPriceException, IllegalMinutesServiceException {
-        checkParameter(nome);
+        checkParameter(nome, "nome");
         
         if (preco <= 0) {
             throw new NoPriceException("O preço do serviço deve ser maior que zero.");
@@ -50,9 +50,9 @@ public abstract class Servico {
         return sb.toString();
     }
 
-    public void checkParameter(String field) throws InvalidFieldException {
+    public void checkParameter(String field, String attr) throws InvalidFieldException {
         if (field == null || field.isBlank()) {
-            throw new InvalidFieldException("Campo não pode ser nulo ou em branco.");
+            throw new InvalidFieldException("O campo [" + attr + "] não pode ser nulo/branco.");
         }
     }
 }

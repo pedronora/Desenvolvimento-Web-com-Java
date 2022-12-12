@@ -12,8 +12,8 @@ public class Vacina extends Servico {
     public Vacina(String nome, float preco, int tempoMinutos, String tipo, String marca, float precoVacina)
             throws InvalidFieldException, NoPriceException, IllegalMinutesServiceException {
         super(nome, preco, tempoMinutos);
-        super.checkParameter(tipo);
-        super.checkParameter(marca);
+        super.checkParameter(tipo, "tipo");
+        super.checkParameter(marca, "marca");
         if (precoVacina <= 0) {
             throw new NoPriceException("O preço da vacina deve ser maior que zero.");
         }
@@ -27,17 +27,16 @@ public class Vacina extends Servico {
     }
 
     public void setTipo(String tipo) throws InvalidFieldException {
-        super.checkParameter(tipo);
+        super.checkParameter(tipo, "tipo");
         this.tipo = tipo;
     }
 
-    public String getMarca() throws InvalidFieldException {
-        super.checkParameter(marca);
+    public String getMarca() {
         return marca;
     }
 
     public void setMarca(String marca) throws InvalidFieldException {
-        super.checkParameter(marca);
+        super.checkParameter(marca, "marca");
         this.marca = marca;
     }
 
