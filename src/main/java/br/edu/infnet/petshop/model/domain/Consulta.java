@@ -6,14 +6,16 @@ import br.edu.infnet.petshop.model.exceptions.NoPriceException;
 
 public class Consulta extends Servico {
     private boolean plantao;
-    private String diagnostico;
+    private String descricao;
     private String receita;
 
     public Consulta(String nome, float preco, int tempoMinutos, boolean plantao, String descricao, String receita)
             throws InvalidFieldException, NoPriceException, IllegalMinutesServiceException {
         super(nome, preco, tempoMinutos);
+        super.checkParameter(descricao, "descricao");
+        super.checkParameter(receita, "receita");
         this.plantao = plantao;
-        this.diagnostico = descricao;
+        this.descricao = descricao;
         this.receita = receita;
     }
 
@@ -25,19 +27,21 @@ public class Consulta extends Servico {
         this.plantao = plantao;
     }
 
-    public String getDiagnostico() {
-        return diagnostico;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDiagnostico(String descricao) {
-        this.diagnostico = descricao;
+    public void setDescricao(String descricao) throws InvalidFieldException {
+        super.checkParameter(descricao, "descricao");
+        this.descricao = descricao;
     }
 
     public String getReceita() {
         return receita;
     }
 
-    public void setReceita(String receita) {
+    public void setReceita(String receita) throws InvalidFieldException {
+        super.checkParameter(receita, "receita");
         this.receita = receita;
     }
 
@@ -52,7 +56,7 @@ public class Consulta extends Servico {
         sb.append(";");
         sb.append(plantao ? "Plantão" : "Normal");
         sb.append(";");
-        sb.append(diagnostico);
+        sb.append(descricao);
         sb.append(";");
         sb.append(receita);
         sb.append(";");
