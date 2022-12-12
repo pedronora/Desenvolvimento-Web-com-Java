@@ -98,7 +98,9 @@ public class ArquivoTest {
                     linha = reader.readLine();
                 }
 
-                writer.write(at.obterLinha());
+                if (at != null) {
+                    writer.write(at.obterLinha());
+                }
 
                 reader.close();
                 fileReader.close();
