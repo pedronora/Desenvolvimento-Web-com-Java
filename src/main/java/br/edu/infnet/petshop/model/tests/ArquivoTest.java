@@ -45,8 +45,7 @@ public class ArquivoTest {
                     switch (campos[0].toUpperCase()) {
                         case "A":
                             try {
-                                Pet pet = new Pet(campos[1], campos[2], campos[3], campos[4], campos[5].charAt(0),
-                                        Boolean.valueOf(campos[6]));
+                                Pet pet = new Pet(campos[1], campos[2], campos[3], campos[4], campos[5].charAt(0), Boolean.valueOf(campos[6]));
 
                                 at = new Atendimento(pet, servicos);
                                 at.setDescricao("Primeiro Atendimento");
@@ -59,9 +58,7 @@ public class ArquivoTest {
 
                         case "B":
                             try {
-                                Banho banho = new Banho(campos[1], Float.valueOf(campos[2]), Integer.valueOf(campos[3]),
-                                        Boolean.valueOf(campos[4]), Boolean.valueOf(campos[5]),
-                                        Boolean.valueOf(campos[6]));
+                                Banho banho = new Banho(campos[1], Float.valueOf(campos[2]), Integer.valueOf(campos[3]), Boolean.valueOf(campos[4]), Boolean.valueOf(campos[5]), Boolean.valueOf(campos[6]));
 
                                 servicos.add(banho);
                             } catch (InvalidFieldException | NoPriceException | IllegalMinutesServiceException e) {
@@ -71,9 +68,8 @@ public class ArquivoTest {
 
                         case "C":
                             try {
-                                Consulta consulta = new Consulta(campos[1], Float.valueOf(campos[2]),
-                                        Integer.valueOf(campos[3]), Boolean.valueOf(campos[4]), campos[5],
-                                        campos[6]);
+                                Consulta consulta = new Consulta(campos[1], Float.valueOf(campos[2]), Integer.valueOf(campos[3]), Boolean.valueOf(campos[4]), campos[5], campos[6]);
+
                                 servicos.add(consulta);
                             } catch (InvalidFieldException | NoPriceException | IllegalMinutesServiceException e) {
                                 System.out.println("Erro: " + e.getMessage());
@@ -82,9 +78,8 @@ public class ArquivoTest {
 
                         case "V":
                             try {
-                                Vacina vacina = new Vacina(campos[1], Float.valueOf(campos[2]),
-                                        Integer.valueOf(campos[3]),
-                                        campos[4], campos[5], Float.valueOf(campos[6]));
+                                Vacina vacina = new Vacina(campos[1], Float.valueOf(campos[2]), Integer.valueOf(campos[3]), campos[4], campos[5], Float.valueOf(campos[6]));
+
                                 servicos.add(vacina);
                             } catch (InvalidFieldException | NoPriceException | IllegalMinutesServiceException e) {
                                 System.out.println("Erro: " + e.getMessage());
