@@ -4,31 +4,30 @@ public class Usuario {
     private String nome;
     private String senha;
     private String email;
-    private int idade;
-    private float salario;
-    private String[] caracteristicas;
-    private String setor;
-    private String tipo;
 
-    public Usuario(String nome, String email) {
-        this.setNome(nome);
+
+    public Usuario() {
+        
+    }
+
+    public Usuario(String email, String senha) {
         this.setEmail(email);
+        this.setSenha(senha);
+    }
+
+    public Usuario(String nome, String email, String senha) {
+        this(email, senha);
+        this.setNome(nome);
     }
 
     @Override
     public String toString() {
 
         return String.format(
-                "O usuário %s tem as credenciais %s e %s, %d anos e ganha R$%.2f."
-                        + "É um usuário do tipo %s, atua no setor %s e tem %d características",
+                "O usuário %s tem as credenciais %s e %s.",
                 nome,
                 email,
-                senha,
-                idade,
-                salario,
-                tipo,
-                setor,
-                caracteristicas.length);
+                senha);
     }
 
     public String getNome() {
@@ -53,45 +52,5 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String[] getCaracteristicas() {
-        return caracteristicas;
-    }
-
-    public void setCaracteristicas(String[] caracteristicas) {
-        this.caracteristicas = caracteristicas;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getSetor() {
-        return setor;
-    }
-
-    public void setSetor(String setor) {
-        this.setor = setor;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(float salario) {
-        this.salario = salario;
     }
 }

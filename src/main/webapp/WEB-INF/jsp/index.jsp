@@ -30,8 +30,8 @@ pageEncoding="UTF-8" %>
         </div>
         <div class="row mb-3">
           <div class="col">
-            <a class="btn btn-primary" href="/usuario" class="link-primary"
-              >Cadastro de Usuário</a
+            <a class="btn btn-primary" href="/usuario/lista" class="link-primary"
+              >Lista de Usuários</a
             >
           </div>
           <div class="col">
