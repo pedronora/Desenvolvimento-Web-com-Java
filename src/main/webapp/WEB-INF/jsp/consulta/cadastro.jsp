@@ -20,7 +20,7 @@
   <body>
     <main class="container rounded shadow my-4 p-4">
         <h1 class="mb-3">Cadastro de Consulta</h1>
-        <a class="btn btn-primary" href="/">Voltar</a>
+        <a class="btn btn-primary" href="/home">Voltar</a>
       </main>
     </body>
   </body>

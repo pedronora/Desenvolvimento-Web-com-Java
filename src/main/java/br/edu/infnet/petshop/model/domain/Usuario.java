@@ -1,13 +1,12 @@
 package br.edu.infnet.petshop.model.domain;
 
 public class Usuario {
+    private Integer id = 0;
     private String nome;
     private String senha;
     private String email;
 
-
     public Usuario() {
-        
     }
 
     public Usuario(String email, String senha) {
@@ -28,6 +27,14 @@ public class Usuario {
                 nome,
                 email,
                 senha);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

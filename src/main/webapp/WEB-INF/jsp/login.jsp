@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,6 +20,7 @@ pageEncoding="UTF-8"%>
   </head>
 
   <body>
+    <c:import url="/WEB-INF/jsp/menu.jsp" />
     <main class="container rounded shadow my-4 p-4">
       <h1 class="mb-3">Login</h1>
       <form action="/login" method="post">
@@ -45,11 +47,13 @@ pageEncoding="UTF-8"%>
             required
           />
         </div>
-        <div class="mb-3">
-          <a href="/usuario">Criar novo usuário</a>
-        </div>
-        <button type="submit" class="btn btn-primary">Entrar</button>
+        <button type="submit" class="btn btn-dark mb-3">Entrar</button>
       </form>
+      <c:if test="${not empty mensagem}">
+      <div class="alert alert-danger mb-3" role="alert">
+        <strong>Atenção!</strong> ${mensagem}
+      </div>
+      </c:if>
     </main>
   </body>
 </html>

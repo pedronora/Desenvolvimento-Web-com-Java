@@ -1,4 +1,4 @@
-package br.edu.infnet.petshop.model.repository;
+package br.edu.infnet.petshop.repository;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import br.edu.infnet.petshop.model.domain.Usuario;
 @Repository
 public class AcessoRepository {
     static public Boolean autenticar(Usuario usuario) {
-        List<Usuario> lista = UsuarioRepository.obterLista();
+        List<Usuario> lista = (List<Usuario>) UsuarioRepository.obterLista();
 
         for (Usuario user : lista) {
             if (usuario.getEmail().equalsIgnoreCase(user.getEmail()) &&
