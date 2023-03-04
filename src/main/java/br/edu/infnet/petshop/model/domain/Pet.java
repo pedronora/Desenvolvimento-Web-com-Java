@@ -3,6 +3,7 @@ package br.edu.infnet.petshop.model.domain;
 import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
 
 public class Pet {
+    private Integer id = 0;
     private String nome;
     private String dataNasc;
     private String especie;
@@ -30,6 +31,14 @@ public class Pet {
         this.raca = source.raca;
         this.genero = source.genero;
         this.castrado = source.castrado;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

@@ -5,6 +5,7 @@ import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
 import br.edu.infnet.petshop.model.exceptions.NoPriceException;
 
 public abstract class Servico {
+    private Integer id = 0;
     private String nome;
     private float preco;
     private int tempoMinutos;
@@ -23,6 +24,14 @@ public abstract class Servico {
         this.nome = nome;
         this.preco = preco;
         this.tempoMinutos = tempoMinutos;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

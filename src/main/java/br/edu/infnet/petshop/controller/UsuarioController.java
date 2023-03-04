@@ -40,14 +40,14 @@ public class UsuarioController {
 
     @GetMapping(value = "/usuario/{id}/detalhes")
     public String detalhes(Model model, @PathVariable Integer id) {
-        Usuario usuario = UsuarioRepository.getUsuarioById(id);
+        Usuario usuario = UsuarioRepository.getById(id);
         model.addAttribute("usuario", usuario);
         return "usuario/detalhes";
     }
 
     @GetMapping(value = "/usuario/{id}/editar")
     public String editar(Model model, @PathVariable Integer id) {
-        Usuario usuario = UsuarioRepository.getUsuarioById(id);
+        Usuario usuario = UsuarioRepository.getById(id);
         model.addAttribute("usuario", usuario);
         return "usuario/editar";
     }

@@ -5,6 +5,7 @@ import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
 import br.edu.infnet.petshop.model.exceptions.NoPriceException;
 
 public class Vacina extends Servico {
+    private Integer id = 0;
     private String tipo;
     private String marca;
     private float precoVacina;
@@ -20,6 +21,14 @@ public class Vacina extends Servico {
         this.tipo = tipo;
         this.marca = marca;
         this.precoVacina = precoVacina;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTipo() {

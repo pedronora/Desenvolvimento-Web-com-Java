@@ -5,16 +5,25 @@ import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
 import br.edu.infnet.petshop.model.exceptions.NoPriceException;
 
 public class Banho extends Servico {
+    private Integer id = 0;
     private boolean hidratarPelo;
     private boolean cortarUnhas;
     private boolean escovarDentes;
 
-    public Banho(String nome, float preco, int tempoMinutos, boolean hidratarPelo, boolean cortarHunhas,
+    public Banho(String nome, float preco, int tempoMinutos, boolean hidratarPelo, boolean cortarUnhas,
             boolean escovarDentes) throws InvalidFieldException, NoPriceException, IllegalMinutesServiceException {
         super(nome, preco, tempoMinutos);
         this.hidratarPelo = hidratarPelo;
-        this.cortarUnhas = cortarHunhas;
+        this.cortarUnhas = cortarUnhas;
         this.escovarDentes = escovarDentes;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public boolean isHidratarPelo() {
@@ -29,8 +38,8 @@ public class Banho extends Servico {
         return cortarUnhas;
     }
 
-    public void setCortarUnhas(boolean cortarHunhas) {
-        this.cortarUnhas = cortarHunhas;
+    public void setCortarUnhas(boolean cortarUnhas) {
+        this.cortarUnhas = cortarUnhas;
     }
 
     public boolean isEscovarDentes() {

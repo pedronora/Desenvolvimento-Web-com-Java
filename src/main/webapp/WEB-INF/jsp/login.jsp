@@ -33,7 +33,6 @@ pageEncoding="UTF-8"%>
             id="email"
             name="email"
             placeholder="Informe o seu email"
-            aria-describedby="emailHelp"
             required
           />
         </div>

@@ -24,7 +24,7 @@ public class UsuarioRepository {
         }
     }
 
-    public static Usuario getUsuarioById(Integer id) {
+    public static Usuario getById(Integer id) {
         Usuario usuario = mapUsuario.get(id);
         return usuario;
     }

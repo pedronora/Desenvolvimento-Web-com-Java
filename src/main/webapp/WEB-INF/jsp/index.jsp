@@ -34,35 +34,35 @@ pageEncoding="UTF-8" %>
         </div>
         <div class="row mb-3">
           <div class="col">
-            <a class="btn btn-dark" href="/usuario/lista" class="link-primary"
-              >Lista de Usuários</a
-            >
-          </div>
-          <div class="col">
-            <a class="btn btn-dark" href="/atendimento" class="link-primary"
+            <a class="btn btn-dark" href="/atendimento"
               >Cadastro de Atendimento</a
             >
           </div>
           <div class="col">
-            <a class="btn btn-dark" href="/pet" class="link-primary"
+            <a class="btn btn-dark" href="/pet"
               >Cadastro de Pet</a
+            >
+          </div>
+          <div class="col">
+            <a class="btn btn-dark" href="/servico"
+              >Cadastro de Serviço</a
             >
           </div>
         </div>
         <div class="row mb-3">
           <div class="col">
-            <a class="btn btn-dark" href="/servico" class="link-primary"
-              >Cadastro de Serviço</a
+            <a class="btn btn-dark" href="/servicos/consulta" 
+              >Consultas</a
             >
           </div>
           <div class="col">
-            <a class="btn btn-dark" href="/banho" class="link-primary"
-              >Cadastro de Banho</a
+            <a class="btn btn-dark" href="/servicos/banho" 
+              >Banhos</a
             >
           </div>
           <div class="col">
-            <a class="btn btn-dark" href="/vacina" class="link-primary"
-              >Cadastro de Vacina</a
+            <a class="btn btn-dark" href="/servicos/vacina" 
+              >Vacinas</a
             >
           </div>
         </div>

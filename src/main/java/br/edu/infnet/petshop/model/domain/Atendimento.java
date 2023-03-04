@@ -8,6 +8,7 @@ import br.edu.infnet.petshop.model.exceptions.AtendimentoSemPetException;
 import br.edu.infnet.petshop.model.exceptions.AtendimentoSemServicosException;
 
 public class Atendimento {
+    private Integer id = 0;
     private LocalDateTime data;
     private String descricao;
     private boolean emergencia;
@@ -25,6 +26,14 @@ public class Atendimento {
         this.data = LocalDateTime.now();
         this.pet = pet;
         this.servicos = servicos;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDateTime getData() {
