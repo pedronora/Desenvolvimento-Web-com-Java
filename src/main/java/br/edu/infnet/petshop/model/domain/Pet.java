@@ -24,15 +24,6 @@ public class Pet {
         this.castrado = castrado;
     }
 
-    public Pet(Pet source) {
-        this.nome = source.nome;
-        this.dataNasc = source.dataNasc;
-        this.especie = source.especie;
-        this.raca = source.raca;
-        this.genero = source.genero;
-        this.castrado = source.castrado;
-    }
-
     public Integer getId() {
         return id;
     }

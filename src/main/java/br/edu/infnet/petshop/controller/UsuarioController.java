@@ -35,7 +35,7 @@ public class UsuarioController {
         msg = "A inclusão do usuário '" + usuario.getNome() + "' foi realizada com sucesso!";
         alert = "success";
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping(value = "/usuario/{id}/detalhes")

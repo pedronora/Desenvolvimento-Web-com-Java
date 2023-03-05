@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
     <c:import url="/WEB-INF/jsp/menu.jsp" />
     <main class="container rounded shadow my-4 p-4">
       <h1 class="mb-3">Cadastro de Atendimento</h1>
-      <a class="btn btn-dark" href="/home">Voltar</a>
+      <a class="btn btn-dark" href="/atendimento">Voltar</a>
     </main>
   </body>
 </html>

@@ -64,7 +64,6 @@
 
           </div>
           <button class="btn btn-dark mb-3" type="submit">Cadastrar</button>
-          <a class="btn btn-dark mb-3" href="/usuario/lista">Voltar</a>
         </form>
       </main>
     </body>

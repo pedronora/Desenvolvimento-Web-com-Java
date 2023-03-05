@@ -11,26 +11,26 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
       <meta charset="UTF-8" />
-      <title>Lista de Banhos</title>
+      <title>Lista de Serviços</title>
     </head>
 
     <body>
       <c:import url="/WEB-INF/jsp/menu.jsp" />
       <main class="container rounded shadow my-4 p-4">
-        <h1 class="mb-3">Listagem de Banhos</h1>
-        <form action="/servicos/banho/cadastro">
+        <h1 class="mb-3">Lista de Serviços</h1>
+        <!-- <form action="/servicos/cadastro">
             <button class="btn btn-dark mb-3" type="su
-            ">Cadastrar Banho</button>
-        </form>
+            ">Cadastrar Serviço</button>
+        </form> -->
         <c:if test="${not empty mensagem}">
           <div class="alert alert-${alerta}" role="alert">
             ${mensagem}
           </div>
         </c:if>
-        <c:if test="${empty banhos}">
-          <h5 class="mb-3">Não existem banhos cadastrados</h5>
+        <c:if test="${empty servicos}">
+          <h5 class="mb-3">Não existem serviços cadastrados</h5>
         </c:if>
-        <c:if test="${not empty banhos}">
+        <c:if test="${not empty servicos}">
           <div class="row mb-3">
             <div class="table-responsive">
               <table class="table table table-striped">
@@ -39,36 +39,21 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Preço</th>
-                    <th scope="col">Tempo de Banho</th>
-                    <th scope="col">Hidratar Pelo</th>
-                    <th scope="col">Cortar Unhas</th>
-                    <th scope="col">Escovar Dentes</th>
+                    <th scope="col">Tempo em minutos</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <c:forEach var="banho" items="${banhos}">
+                  <c:forEach var="servico" items="${servicos}">
                     <tr>
-                      <th scope="row">${banho.id}</th>
-                      <td>${banho.nome}</td>
-                      <td>${banho.preco}</td>
-                      <td>${banho.tempoMinutos}</td>
+                      <th scope="row">${servico.id}</th>
+                      <td>${servico.nome}</td>
+                      <td>${servico.preco}</td>
+                      <td>${servico.tempoMinutos}</td>
                       <td>
-                        <c:if test="${banho.hidratarPelo}">Sim</c:if>
-                        <c:if test="${!banho.hidratarPelo}">Não</c:if>
-                      </td>
-                      <td>
-                        <c:if test="${banho.cortarUnhas}">Sim</c:if>
-                        <c:if test="${!banho.cortarUnhas}">Não</c:if>
-                      </td>
-                      <td>
-                        <c:if test="${banho.escovarDentes}">Sim</c:if>
-                        <c:if test="${!banho.escovarDentes}">Não</c:if>
-                      </td>
-                      <td>
-                        <a class="btn btn-outline-secondary" href="/servicos/banho/${banho.id}/detalhes">Detalhes</a>
-                        <a class="btn btn-outline-info" href="/servicos/banho/${banho.id}/editar">Editar</a>
-                        <a class="btn btn-outline-danger" href="/servicos/banho/${banho.id}/excluir">Excluir</a>
+                        <a class="btn btn-outline-secondary" href="/atendimento/${atendimento.id}/detalhes">Detalhes</a>
+                        <a class="btn btn-outline-info" href="/atendimento/${atendimento.id}/editar">Editar</a>
+                        <a class="btn btn-outline-danger" href="/atendimento/${atendimento.id}/excluir">Excluir</a>
                       </td>
                     </tr>
                   </c:forEach>
@@ -77,11 +62,7 @@
                   <tr>
                     <th scope="row"></th>
                     <th scope="row">Total</td>
-                    <th scope="row">${banhos.size()}</td>
-                    <th scope="row"></th>
-                    <th scope="row"></th>
-                    <th scope="row"></th>
-                    <th scope="row"></th>
+                    <th scope="row">${pets.size()}</td>
                     <th scope="row"></th>
                   </tr>
                 </tfoot>
