@@ -33,7 +33,7 @@ pageEncoding="UTF-8"%>
           </div>
           <div class="col mb-3">
             <label for="dataNasc" class="form-label">Data de Nascimento</label>
-            <input type="date" class="form-control" id="dataNasc" name="dataNasc" value="${pet.dataNasc}" required>
+            <input type="text" class="form-control" id="dataNasc" name="dataNasc" value="${pet.dataNasc}" required>
           </div>
         </div>
 
