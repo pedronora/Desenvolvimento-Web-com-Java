@@ -13,7 +13,7 @@ public class UsuarioRepository {
     private static Integer id = 1;
     private static Map<Integer, Usuario> mapUsuario = new HashMap<Integer, Usuario>();
 
-    public static boolean create(Usuario usuario) {
+    public boolean create(Usuario usuario) {
         try {
             usuario.setId(id++);
             mapUsuario.put(usuario.getId(), usuario);
@@ -24,12 +24,12 @@ public class UsuarioRepository {
         }
     }
 
-    public static Usuario getById(Integer id) {
+    public Usuario getById(Integer id) {
         Usuario usuario = mapUsuario.get(id);
         return usuario;
     }
 
-    public static boolean editar(Usuario usuario) {
+    public boolean update(Usuario usuario) {
         try {
             mapUsuario.put(usuario.getId(), usuario);
             return true;
@@ -39,12 +39,12 @@ public class UsuarioRepository {
         }
     }
 
-    public static Usuario delete(Integer key) {
+    public Usuario delete(Integer key) {
         Usuario usuario = mapUsuario.remove(key);
         return usuario;
     }
 
-    public static Collection<Usuario> obterLista() {
+    public Collection<Usuario> getAll() {
         return mapUsuario.values();
     }
 }

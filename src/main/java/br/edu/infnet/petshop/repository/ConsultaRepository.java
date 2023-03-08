@@ -13,7 +13,7 @@ public class ConsultaRepository {
     private static Integer id = 1;
     private static Map<Integer, Consulta> mapConsulta = new HashMap<Integer, Consulta>();
 
-    public static boolean create(Consulta consulta) {
+    public boolean create(Consulta consulta) {
         try {
             consulta.setId(id++);
             mapConsulta.put(consulta.getId(), consulta);
@@ -24,12 +24,12 @@ public class ConsultaRepository {
         }
     }
 
-    public static Consulta getById(Integer id) {
+    public Consulta getById(Integer id) {
         Consulta Consulta = mapConsulta.get(id);
         return Consulta;
     }
 
-    public static boolean editar(Consulta consulta) {
+    public boolean update(Consulta consulta) {
         try {
             mapConsulta.put(consulta.getId(), consulta);
             return true;
@@ -39,12 +39,12 @@ public class ConsultaRepository {
         }
     }
 
-    public static Consulta delete(Integer id) {
+    public Consulta delete(Integer id) {
         Consulta consulta = mapConsulta.remove(id);
         return consulta;
     }
 
-    public static Collection<Consulta> obterLista() {
+    public Collection<Consulta> getAll() {
         return mapConsulta.values();
     }
 }

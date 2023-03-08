@@ -13,7 +13,7 @@ public class VacinaRepository {
     private static Integer id = 1;
     private static Map<Integer, Vacina> mapVacina = new HashMap<Integer, Vacina>();
 
-    public static boolean create(Vacina vacina) {
+    public boolean create(Vacina vacina) {
         try {
             vacina.setId(id++);
             mapVacina.put(vacina.getId(), vacina);
@@ -24,12 +24,12 @@ public class VacinaRepository {
         }
     }
 
-    public static Vacina getById(Integer id) {
+    public Vacina getById(Integer id) {
         Vacina vacina = mapVacina.get(id);
         return vacina;
     }
 
-    public static boolean editar(Vacina vacina) {
+    public boolean update(Vacina vacina) {
         try {
             mapVacina.put(vacina.getId(), vacina);
             return true;
@@ -39,12 +39,12 @@ public class VacinaRepository {
         }
     }
 
-    public static Vacina delete(Integer id) {
+    public Vacina delete(Integer id) {
         Vacina vacina = mapVacina.remove(id);
         return vacina;
     }
 
-    public static Collection<Vacina> obterLista() {
+    public Collection<Vacina> getAll() {
         return mapVacina.values();
     }
 }

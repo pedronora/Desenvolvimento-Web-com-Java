@@ -13,7 +13,7 @@ public class BanhoRepository {
     private static Integer id = 1;
     private static Map<Integer, Banho> mapBanho = new HashMap<Integer, Banho>();
 
-    public static boolean create(Banho banho) {
+    public boolean create(Banho banho) {
         try {
             banho.setId(id++);
             mapBanho.put(banho.getId(), banho);
@@ -24,12 +24,12 @@ public class BanhoRepository {
         }
     }
 
-    public static Banho getById(Integer id) {
+    public Banho getById(Integer id) {
         Banho banho = mapBanho.get(id);
         return banho;
     }
 
-    public static boolean editar(Banho banho) {
+    public boolean update(Banho banho) {
         try {
             mapBanho.put(banho.getId(), banho);
             return true;
@@ -39,12 +39,12 @@ public class BanhoRepository {
         }
     }
 
-    public static Banho delete(Integer id) {
+    public Banho delete(Integer id) {
         Banho banho = mapBanho.remove(id);
         return banho;
     }
 
-    public static Collection<Banho> obterLista() {
+    public Collection<Banho> getAll() {
         return mapBanho.values();
     }
 }

@@ -23,7 +23,7 @@ public class Usuario {
     public String toString() {
 
         return String.format(
-                "O usuário %s tem as credenciais %s e %s.",
+                "%s tem as credenciais: Login: %s e Senha: %s.",
                 nome,
                 email,
                 senha);

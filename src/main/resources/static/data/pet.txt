@@ -1,0 +1,5 @@
+Pet1;25/04/2018;Gato;SRD;M;false
+Pet2;25/04/2019;Cachorro;SRD;F;true
+Pet3;25/04/2020;Gato;SRD;M;false
+Pet4;25/04/2021;Cachorro;SRD;F;true
+Pet5;25/04/2022;Gato;SRD;M;false

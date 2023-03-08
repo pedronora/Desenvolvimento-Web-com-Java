@@ -1,0 +1,5 @@
+Banho1;21;11;false;true;false
+Banho2;22;12;true;false;true
+Banho3;23;13;false;true;false
+Banho4;24;14;true;false;true
+Banho5;25;15;false;true;false

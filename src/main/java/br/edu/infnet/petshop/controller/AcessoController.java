@@ -2,6 +2,7 @@ package br.edu.infnet.petshop.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.petshop.model.domain.Usuario;
-import br.edu.infnet.petshop.repository.AcessoRepository;
+import br.edu.infnet.petshop.service.AcessoService;
 
 @Controller
 @SessionAttributes("user")
 public class AcessoController {
+
+    @Autowired
+    private AcessoService acessoService;
+
     @GetMapping(value = "/login")
     public String telaLogin() {
         return "login";
@@ -25,7 +30,7 @@ public class AcessoController {
     public String login(Model model, @RequestParam String email, @RequestParam String senha) {
         Usuario usuario = new Usuario(email, senha);
 
-        Usuario usuarioAutenticado = AcessoRepository.autenticar(usuario);
+        Usuario usuarioAutenticado = acessoService.auth(usuario);
 
         if (usuarioAutenticado != null) {
             model.addAttribute("user", usuarioAutenticado);

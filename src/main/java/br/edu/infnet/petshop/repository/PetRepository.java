@@ -13,7 +13,7 @@ public class PetRepository {
     private static Integer id = 1;
     private static Map<Integer, Pet> mapPet = new HashMap<Integer, Pet>();
 
-    public static boolean create(Pet pet) {
+    public boolean create(Pet pet) {
         try {
             pet.setId(id++);
             mapPet.put(pet.getId(), pet);
@@ -24,12 +24,12 @@ public class PetRepository {
         }
     }
 
-    public static Pet getById(Integer id) {
+    public Pet getById(Integer id) {
         Pet pet = mapPet.get(id);
         return pet;
     }
 
-    public static boolean editar(Pet pet) {
+    public boolean update(Pet pet) {
         try {
             mapPet.put(pet.getId(), pet);
             return true;
@@ -39,12 +39,12 @@ public class PetRepository {
         }
     }
 
-    public static Pet delete(Integer id) {
+    public Pet delete(Integer id) {
         Pet pet = mapPet.remove(id);
         return pet;
     }
 
-    public static Collection<Pet> obterLista() {
+    public Collection<Pet> getAll() {
         return mapPet.values();
     }
 }

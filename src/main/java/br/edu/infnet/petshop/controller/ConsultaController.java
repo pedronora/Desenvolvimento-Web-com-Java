@@ -1,5 +1,6 @@
 package br.edu.infnet.petshop.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,12 +8,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.edu.infnet.petshop.model.domain.Consulta;
-import br.edu.infnet.petshop.repository.ConsultaRepository;
+import br.edu.infnet.petshop.service.ConsultaService;
 
 @Controller
 public class ConsultaController {
     private String msg;
     private String alert;
+
+    @Autowired
+    ConsultaService consultaService;
 
     @GetMapping(value = "/servicos/consulta/cadastro")
     public String telaCadastro() {
@@ -21,7 +25,7 @@ public class ConsultaController {
 
     @GetMapping(value = "/servicos/consulta")
     public String telaLista(Model model) {
-        model.addAttribute("consultas", ConsultaRepository.obterLista());
+        model.addAttribute("consultas", consultaService.getAll());
         model.addAttribute("mensagem", msg);
         model.addAttribute("alerta", alert);
         msg = null;
@@ -30,8 +34,8 @@ public class ConsultaController {
     }
 
     @PostMapping(value = "/servicos/consulta/incluir")
-    public String incluir(Consulta consulta) {
-        ConsultaRepository.create(consulta);
+    public String create(Consulta consulta) {
+        consultaService.create(consulta);
         msg = "A inclusão do serviço '" + consulta.getNome() + "' foi realizada com sucesso!";
         alert = "success";
 
@@ -39,22 +43,22 @@ public class ConsultaController {
     }
 
     @GetMapping(value = "/servicos/consulta/{id}/detalhes")
-    public String detalhes(Model model, @PathVariable Integer id) {
-        Consulta consulta = ConsultaRepository.getById(id);
+    public String details(Model model, @PathVariable Integer id) {
+        Consulta consulta = consultaService.getById(id);
         model.addAttribute("consulta", consulta);
         return "servicos/consulta/detalhes";
     }
 
     @GetMapping(value = "/servicos/consulta/{id}/editar")
-    public String editar(Model model, @PathVariable Integer id) {
-        Consulta consulta = ConsultaRepository.getById(id);
+    public String update(Model model, @PathVariable Integer id) {
+        Consulta consulta = consultaService.getById(id);
         model.addAttribute("consulta", consulta);
         return "servicos/consulta/editar";
     }
 
     @PostMapping(value = "/servicos/consulta/editar")
-    public String editado(Consulta consulta) {
-        ConsultaRepository.editar(consulta);
+    public String updated(Consulta consulta) {
+        consultaService.update(consulta);
         msg = "As informações do serviço '" + consulta.getNome() + "' foram atualizadas com sucesso!";
         alert = "success";
 
@@ -62,8 +66,8 @@ public class ConsultaController {
     }
 
     @GetMapping(value = "/servicos/consulta/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
-        Consulta consulta = ConsultaRepository.delete(id);
+    public String delete(@PathVariable Integer id) {
+        Consulta consulta = consultaService.delete(id);
         msg = "O serviço de '" + consulta.getNome() + "' foi excluído!";
         alert = "danger";
 

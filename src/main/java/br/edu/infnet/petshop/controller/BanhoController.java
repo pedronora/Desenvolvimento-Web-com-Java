@@ -1,5 +1,6 @@
 package br.edu.infnet.petshop.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,12 +8,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.edu.infnet.petshop.model.domain.Banho;
-import br.edu.infnet.petshop.repository.BanhoRepository;
+import br.edu.infnet.petshop.service.BanhoService;
 
 @Controller
 public class BanhoController {
     private String msg;
     private String alert;
+
+    @Autowired
+    BanhoService banhoService;
 
     @GetMapping(value = "/servicos/banho/cadastro")
     public String telaCadastro() {
@@ -21,7 +25,7 @@ public class BanhoController {
 
     @GetMapping(value = "/servicos/banho")
     public String telaLista(Model model) {
-        model.addAttribute("banhos", BanhoRepository.obterLista());
+        model.addAttribute("banhos", banhoService.getAll());
         model.addAttribute("mensagem", msg);
         model.addAttribute("alerta", alert);
         msg = null;
@@ -30,8 +34,8 @@ public class BanhoController {
     }
 
     @PostMapping(value = "/servicos/banho/incluir")
-    public String incluir(Banho banho) {
-        BanhoRepository.create(banho);
+    public String create(Banho banho) {
+        banhoService.create(banho);
         msg = "A inclusão do serviço '" + banho.getNome() + "' foi realizada com sucesso!";
         alert = "success";
 
@@ -39,22 +43,22 @@ public class BanhoController {
     }
 
     @GetMapping(value = "/servicos/banho/{id}/detalhes")
-    public String detalhes(Model model, @PathVariable Integer id) {
-        Banho banho = BanhoRepository.getById(id);
+    public String details(Model model, @PathVariable Integer id) {
+        Banho banho = banhoService.getById(id);
         model.addAttribute("banho", banho);
         return "servicos/banho/detalhes";
     }
 
     @GetMapping(value = "/servicos/banho/{id}/editar")
-    public String editar(Model model, @PathVariable Integer id) {
-        Banho banho = BanhoRepository.getById(id);
+    public String update(Model model, @PathVariable Integer id) {
+        Banho banho = banhoService.getById(id);
         model.addAttribute("banho", banho);
         return "servicos/banho/editar";
     }
 
     @PostMapping(value = "/servicos/banho/editar")
-    public String editado(Banho banho) {
-        BanhoRepository.editar(banho);
+    public String updated(Banho banho) {
+        banhoService.update(banho);
         msg = "As informações do serviço '" + banho.getNome() + "' foram atualizadas com sucesso!";
         alert = "success";
 
@@ -62,8 +66,8 @@ public class BanhoController {
     }
 
     @GetMapping(value = "/servicos/banho/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
-        Banho banho = BanhoRepository.delete(id);
+    public String delete(@PathVariable Integer id) {
+        Banho banho = banhoService.delete(id);
         msg = "O serviço de '" + banho.getNome() + "' foi excluído!";
         alert = "danger";
 
