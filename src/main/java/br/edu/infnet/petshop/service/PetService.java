@@ -14,23 +14,27 @@ public class PetService {
     @Autowired
     PetRepository petRepository;
 
-    public Boolean create(Pet pet) {
-        return petRepository.create(pet);
+    public Pet create(Pet pet) {
+        return petRepository.save(pet);
     }
 
     public Pet getById(Integer id) {
-        return petRepository.getById(id);
+        return petRepository.findById(id).get();
     }
 
-    public Boolean update(Pet pet) {
-        return petRepository.update(pet);
+    public Pet update(Pet pet) {
+        return petRepository.save(pet);
     }
 
-    public Pet delete(Integer id) {
-        return petRepository.delete(id);
+    public void delete(Integer id) {
+        petRepository.deleteById(id);
     }
 
     public Collection<Pet> getAll() {
-        return petRepository.getAll();
+        return (Collection<Pet>)petRepository.findAll();
+    }
+
+    public Collection<Pet> getAllById(Integer id) {
+        return petRepository.getAllByUsuario(id);
     }
 }

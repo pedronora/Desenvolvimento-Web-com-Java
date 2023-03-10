@@ -51,7 +51,7 @@
                     <tr>
                       <th scope="row">${banho.id}</th>
                       <td>${banho.nome}</td>
-                      <td>${banho.preco}</td>
+                      <td>R$ ${banho.preco}</td>
                       <td>${banho.tempoMinutos}</td>
                       <td>
                         <c:if test="${banho.hidratarPelo}">Sim</c:if>

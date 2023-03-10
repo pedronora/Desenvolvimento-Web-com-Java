@@ -1,15 +1,31 @@
 package br.edu.infnet.petshop.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
 
+@Entity
 public class Pet {
-    private Integer id = 0;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nome;
     private String dataNasc;
     private String especie;
     private String raca;
     private char genero;
     private boolean castrado;
+    @ManyToOne
+    @JoinColumn(name = "id_Usuario")
+    private Usuario usuario;
+
+    public Pet() {
+
+    }
 
     public Pet(String nome, String dataNasc, String especie, String raca, char genero, boolean castrado)
             throws InvalidFieldException {
@@ -78,6 +94,14 @@ public class Pet {
 
     public void setCastrado(boolean castrado) {
         this.castrado = castrado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public void checkParameter(String field, String attr) throws InvalidFieldException {

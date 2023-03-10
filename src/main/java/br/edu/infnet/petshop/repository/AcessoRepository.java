@@ -1,7 +1,6 @@
 package br.edu.infnet.petshop.repository;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +14,7 @@ public class AcessoRepository {
     UsuarioRepository usuarioRepository;
 
     public Usuario auth(Usuario usuario) {
-        List<Usuario> lista = new ArrayList<Usuario>(usuarioRepository.getAll());
+        Collection<Usuario> lista = (Collection<Usuario>)usuarioRepository.findAll();
 
         for (Usuario user : lista) {
             if (usuario.getEmail().equalsIgnoreCase(user.getEmail()) &&

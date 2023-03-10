@@ -14,23 +14,27 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public boolean create(Usuario usuario) {
-        return usuarioRepository.create(usuario);
+    public Usuario auth(Usuario usuario) {
+        return usuarioRepository.auth(usuario.getEmail(), usuario.getSenha());
+    }
+
+    public Usuario create(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
     public Usuario getById(Integer id) {
-        return usuarioRepository.getById(id);
+        return usuarioRepository.findById(id).get();
     }
 
-    public Boolean update(Usuario suario) {
-        return usuarioRepository.update(suario);
+    public Usuario update(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
-    public Usuario delete(Integer id) {
-        return usuarioRepository.delete(id);
+    public void delete(Integer id) {
+        usuarioRepository.deleteById(id);
     }
 
     public Collection<Usuario> getAll() {
-        return usuarioRepository.getAll();
+        return (Collection<Usuario>)usuarioRepository.findAll();
     }
 }

@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.petshop.model.domain.Usuario;
-import br.edu.infnet.petshop.service.AcessoService;
+import br.edu.infnet.petshop.service.UsuarioService;
 
 @Controller
 @SessionAttributes("user")
 public class AcessoController {
 
     @Autowired
-    private AcessoService acessoService;
+    private UsuarioService usuarioService;
 
     @GetMapping(value = "/login")
     public String telaLogin() {
@@ -30,10 +30,10 @@ public class AcessoController {
     public String login(Model model, @RequestParam String email, @RequestParam String senha) {
         Usuario usuario = new Usuario(email, senha);
 
-        Usuario usuarioAutenticado = acessoService.auth(usuario);
+        usuario = usuarioService.auth(usuario);
 
-        if (usuarioAutenticado != null) {
-            model.addAttribute("user", usuarioAutenticado);
+        if (usuario != null) {
+            model.addAttribute("user", usuario);
             return "redirect:/home";
         }
 

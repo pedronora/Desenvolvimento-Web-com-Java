@@ -51,11 +51,11 @@
                     <tr>
                       <th scope="row">${vacina.id}</th>
                       <td>${vacina.nome}</td>
-                      <td>${vacina.preco}</td>
+                      <td>R$ ${vacina.preco}</td>
                       <td>${vacina.tempoMinutos}</td>
                       <td>${vacina.tipo}</td>
                       <td>${vacina.marca}</td>
-                      <td>${vacina.precoVacina}</td>
+                      <td>R$ ${vacina.precoVacina}</td>
                       <td>
                         <a class="btn btn-outline-secondary" href="/servicos/vacina/${vacina.id}/detalhes">Detalhes</a>
                         <a class="btn btn-outline-info" href="/servicos/vacina/${vacina.id}/editar">Editar</a>

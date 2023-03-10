@@ -5,11 +5,14 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.petshop.model.domain.Pet;
+import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.PetService;
 
+@Order(2)
 @Component
 public class PetLoader implements ApplicationRunner {
 
@@ -31,8 +34,12 @@ public class PetLoader implements ApplicationRunner {
             while (linha != null) {
             campos = linha.split(";");
 
+            Usuario novoUsuario = new Usuario();
+            novoUsuario.setId(1);
+
             Pet pet = new Pet(campos[0], campos[1],
             campos[2], campos[3],campos[4].charAt(0), Boolean.valueOf(campos[5]));
+            pet.setUsuario(novoUsuario);
 
             petService.create(pet);
             linha = reader.readLine();

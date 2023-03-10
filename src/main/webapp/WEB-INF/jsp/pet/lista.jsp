@@ -43,6 +43,7 @@
                     <th scope="col">Raça</th>
                     <th scope="col">Gênero</th>
                     <th scope="col">Castrado</th>
+                    <th scope="col">Usuário</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -62,6 +63,7 @@
                         <c:if test="${pet.castrado}">Sim</c:if>
                         <c:if test="${!pet.castrado}">Não</c:if>
                       </td>
+                      <td>${pet.usuario.nome}</td>
                       <td>
                         <a class="btn btn-outline-secondary" href="/pet/${pet.id}/detalhes">Detalhes</a>
                         <a class="btn btn-outline-info" href="/pet/${pet.id}/editar">Editar</a>
@@ -75,6 +77,7 @@
                     <th scope="row"></th>
                     <th scope="row">Total</td>
                     <th scope="row">${pets.size()}</td>
+                    <th scope="row"></th>
                     <th scope="row"></th>
                     <th scope="row"></th>
                     <th scope="row"></th>

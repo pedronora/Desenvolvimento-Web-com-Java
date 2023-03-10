@@ -51,7 +51,7 @@
                     <tr>
                       <th scope="row">${consulta.id}</th>
                       <td>${consulta.nome}</td>
-                      <td>${consulta.preco}</td>
+                      <td>R$ ${consulta.preco}</td>
                       <td>${consulta.tempoMinutos}</td>
                       <td>
                         <c:if test="${consulta.plantao}">Sim</c:if>

@@ -1,50 +1,12 @@
 package br.edu.infnet.petshop.repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
 import br.edu.infnet.petshop.model.domain.Usuario;
 
-@Repository
-public class UsuarioRepository {
-    private static Integer id = 1;
-    private static Map<Integer, Usuario> mapUsuario = new HashMap<Integer, Usuario>();
+public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
 
-    public boolean create(Usuario usuario) {
-        try {
-            usuario.setId(id++);
-            mapUsuario.put(usuario.getId(), usuario);
-            return true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-    }
-
-    public Usuario getById(Integer id) {
-        Usuario usuario = mapUsuario.get(id);
-        return usuario;
-    }
-
-    public boolean update(Usuario usuario) {
-        try {
-            mapUsuario.put(usuario.getId(), usuario);
-            return true;
-        }  catch (Exception e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-    }
-
-    public Usuario delete(Integer key) {
-        Usuario usuario = mapUsuario.remove(key);
-        return usuario;
-    }
-
-    public Collection<Usuario> getAll() {
-        return mapUsuario.values();
-    }
+    @Query("from Usuario u where u.email = :email and u.senha = :senha")
+    Usuario auth(String email, String senha);
 }

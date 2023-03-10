@@ -67,7 +67,8 @@ public class UsuarioController {
 
     @GetMapping(value = "/usuario/{id}/excluir")
     public String delete(@PathVariable Integer id) {
-        Usuario usuario = usuarioService.delete(id);
+        Usuario usuario = usuarioService.getById(id);
+        usuarioService.delete(id);
         msg = "O usuaŕio '" + usuario.getNome() + "' foi excluído!";
         alert = "danger";
 

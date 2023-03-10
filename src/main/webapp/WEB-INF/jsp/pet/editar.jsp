@@ -42,8 +42,8 @@ pageEncoding="UTF-8"%>
             <label for="especie" class="form-label">Espécie do Pet:</label>
             <select class="form-select" aria-label="selecao" name="especie">
               <option value="Cachorro" <c:if test="${pet.especie == 'Cachorro'}">selected</c:if>>Cachorro</option>
-              <option value="Cachorro" <c:if test="${pet.especie == 'Gato'}">selected</c:if>>Gato</option>
-              <option value="Cachorro" <c:if test="${pet.especie == 'Outro'}">selected</c:if>>Outro</option>
+              <option value="Gato" <c:if test="${pet.especie == 'Gato'}">selected</c:if>>Gato</option>
+              <option value="Outro" <c:if test="${pet.especie == 'Outro'}">selected</c:if>>Outro</option>
             </select>
           </div>       
           <div class="col mb-3">
