@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import br.edu.infnet.petshop.model.domain.Atendimento;
 import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.AtendimentoService;
+import br.edu.infnet.petshop.service.PetService;
+import br.edu.infnet.petshop.service.ServicoService;
 
 @Controller
 public class AtendimentoController {
@@ -20,8 +22,17 @@ public class AtendimentoController {
     @Autowired
     AtendimentoService atendimentoService;
 
+    @Autowired
+    PetService petService;
+
+    @Autowired
+    ServicoService servicoService;
+
     @GetMapping(value = "/atendimento/cadastro")
-    public String telaCadastro() {
+    public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
+        model.addAttribute("pets", petService.getAllByUsuario(usuario.getId()));
+        model.addAttribute("servicos", servicoService.getAllByUsuario(usuario.getId()));
+        
         return "/atendimento/cadastro";
     }
 

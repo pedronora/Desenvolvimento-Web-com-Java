@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
               <option value="Raiva">Raiva</option>
               <option value="Gripe">Gripe</option>
             </select>
-          </div>         
+          </div>
         </div>
 
         <div class="row">

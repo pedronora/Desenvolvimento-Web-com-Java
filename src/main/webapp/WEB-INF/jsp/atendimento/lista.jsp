@@ -51,9 +51,12 @@
                       <th scope="row">${atendimento.id}</th>
                       <td>${atendimento.data}</td>
                       <td>${atendimento.descricao}</td>
-                      <td>${atendimento.emergencia}</td>
-                      <td>${atendimento.pet}</td>
-                      <td>${atendimento.servicos}</td>
+                      <td>
+                        <c:if test="${atendimento.emergencia}">Sim</c:if>
+                        <c:if test="${!atendimento.emergencia}">Não</c:if>
+                      </td>
+                      <td>${atendimento.pet.nome}</td>
+                      <td>${atendimento.servicos.size()}</td>
                       <td>
                         <a class="btn btn-outline-secondary" href="/atendimento/${atendimento.id}/detalhes">Detalhes</a>
                         <a class="btn btn-outline-info" href="/atendimento/${atendimento.id}/editar">Editar</a>
@@ -66,7 +69,8 @@
                   <tr>
                     <th scope="row"></th>
                     <th scope="row">Total</td>
-                    <th scope="row">${pets.size()}</td>
+                    <th scope="row">${atendimentos.size()}</td>
+                    <th scope="row"></th>
                     <th scope="row"></th>
                     <th scope="row"></th>
                     <th scope="row"></th>
