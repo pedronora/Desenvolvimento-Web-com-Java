@@ -19,7 +19,7 @@ public class PetService {
     }
 
     public Pet getById(Integer id) {
-        return petRepository.findById(id).get();
+        return petRepository.findById(id).orElse(null);
     }
 
     public Pet update(Pet pet) {
@@ -34,7 +34,7 @@ public class PetService {
         return (Collection<Pet>)petRepository.findAll();
     }
 
-    public Collection<Pet> getAllById(Integer id) {
-        return petRepository.getAllByUsuario(id);
+    public Collection<Pet> getAllByUsuario(Integer id) {
+        return petRepository.findAllByUsuario(id);
     }
 }

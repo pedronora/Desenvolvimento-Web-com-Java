@@ -4,16 +4,38 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import br.edu.infnet.petshop.model.exceptions.AtendimentoSemPetException;
 import br.edu.infnet.petshop.model.exceptions.AtendimentoSemServicosException;
 
+@Entity
 public class Atendimento {
-    private Integer id = 0;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private LocalDateTime data;
     private String descricao;
     private boolean emergencia;
+    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "id_Pet")
     private Pet pet;
+    @ManyToMany(cascade = CascadeType.DETACH)
     private List<Servico> servicos;
+    @ManyToOne
+    @JoinColumn(name = "id_Usuario")
+    private Usuario usuario;
+
+    public Atendimento() {
+    }
 
     public Atendimento(Pet pet, List<Servico> servicos)
             throws AtendimentoSemPetException, AtendimentoSemServicosException {
@@ -40,6 +62,10 @@ public class Atendimento {
         return data;
     }
 
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -60,8 +86,24 @@ public class Atendimento {
         return pet;
     }
 
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
     public List<Servico> getServicos() {
         return servicos;
+    }
+
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

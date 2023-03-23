@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.petshop.model.domain.Banho;
+import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.BanhoService;
 
 @Component
@@ -28,11 +29,16 @@ public class BanhoLoader implements ApplicationRunner {
             String linha = reader.readLine();
             String[] campos = null;
 
+            Usuario usuario = new Usuario();
+            usuario.setId(1);
+
             while (linha != null) {
                 campos = linha.split(";");
 
                 Banho banho = new Banho(campos[0], Float.valueOf(campos[1]), Integer.valueOf(campos[2]),
                         Boolean.valueOf(campos[3]), Boolean.valueOf(campos[4]), Boolean.valueOf(campos[5]));
+
+                banho.setUsuario(usuario);
 
                 banhoService.create(banho);
                 linha = reader.readLine();

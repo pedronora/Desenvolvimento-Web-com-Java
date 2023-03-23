@@ -52,6 +52,7 @@
                       <td>${atendimento.data}</td>
                       <td>${atendimento.descricao}</td>
                       <td>${atendimento.emergencia}</td>
+                      <td>${atendimento.pet}</td>
                       <td>${atendimento.servicos}</td>
                       <td>
                         <a class="btn btn-outline-secondary" href="/atendimento/${atendimento.id}/detalhes">Detalhes</a>

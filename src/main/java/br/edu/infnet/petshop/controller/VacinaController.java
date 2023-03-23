@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.model.domain.Vacina;
 import br.edu.infnet.petshop.service.VacinaService;
 
@@ -24,8 +26,8 @@ public class VacinaController {
     }
 
     @GetMapping(value = "/servicos/vacina")
-    public String telaLista(Model model) {
-        model.addAttribute("vacinas", vacinaService.getAll());
+    public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
+        model.addAttribute("vacinas", vacinaService.getAllByUsuario(usuario.getId()));
         model.addAttribute("mensagem", msg);
         model.addAttribute("alerta", alert);
         msg = null;
@@ -34,7 +36,8 @@ public class VacinaController {
     }
 
     @PostMapping(value = "/servicos/vacina/incluir")
-    public String create(Vacina vacina) {
+    public String create(Vacina vacina,  @SessionAttribute("user") Usuario usuario) {
+        vacina.setUsuario(usuario);
         vacinaService.create(vacina);
         msg = "A inclusão do serviço '" + vacina.getNome() + "' foi realizada com sucesso!";
         alert = "success";
@@ -57,7 +60,8 @@ public class VacinaController {
     }
 
     @PostMapping(value = "/servicos/vacina/editar")
-    public String updated(Vacina vacina) {
+    public String updated(Vacina vacina,  @SessionAttribute("user") Usuario usuario) {
+        vacina.setUsuario(usuario);
         vacinaService.update(vacina);
         msg = "As informações do serviço '" + vacina.getNome() + "' foram atualizadas com sucesso!";
         alert = "success";
@@ -67,7 +71,8 @@ public class VacinaController {
 
     @GetMapping(value = "/servicos/vacina/{id}/excluir")
     public String delete(@PathVariable Integer id) {
-        Vacina vacina = vacinaService.delete(id);
+        Vacina vacina = vacinaService.getById(id);
+        vacinaService.delete(id);
         msg = "O serviço de '" + vacina.getNome() + "' foi excluído!";
         alert = "danger";
 

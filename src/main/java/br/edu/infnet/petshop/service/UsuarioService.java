@@ -23,7 +23,7 @@ public class UsuarioService {
     }
 
     public Usuario getById(Integer id) {
-        return usuarioRepository.findById(id).get();
+        return usuarioRepository.findById(id).orElse(null);
     }
 
     public Usuario update(Usuario usuario) {

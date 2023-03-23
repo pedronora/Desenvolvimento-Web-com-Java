@@ -36,6 +36,7 @@
                     <th scope="col">Nome Completo</th>
                     <th scope="col">Email</th>
                     <th scope="col">Qtd. Pets</th>
+                    <th scope="col">Qtd. Serviços</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -46,6 +47,7 @@
                       <td>${usuario.nome}</td>
                       <td>${usuario.email}</td>
                       <td>${usuario.pets.size()}</td>
+                      <td>${usuario.servicos.size()}</td>
                       <td>
                         <a class="btn btn-outline-secondary" href="/usuario/${usuario.id}/detalhes">Detalhes</a>
                         <a class="btn btn-outline-info" href="/usuario/${usuario.id}/editar">Editar</a>

@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import br.edu.infnet.petshop.model.domain.Pet;
 
 public interface PetRepository extends CrudRepository<Pet, Integer> {
-    @Query("from Pet p where p.usuario.id = :userId")
-    List<Pet> getAllByUsuario(Integer userId);
+    @Query("from Pet p where p.usuario.id = :id")
+    List<Pet> findAllByUsuario(Integer id);
 }

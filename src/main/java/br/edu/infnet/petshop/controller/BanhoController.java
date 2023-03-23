@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.petshop.model.domain.Banho;
+import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.BanhoService;
 
 @Controller
@@ -24,8 +26,8 @@ public class BanhoController {
     }
 
     @GetMapping(value = "/servicos/banho")
-    public String telaLista(Model model) {
-        model.addAttribute("banhos", banhoService.getAll());
+    public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
+        model.addAttribute("banhos", banhoService.getAllByUsuario(usuario.getId()));
         model.addAttribute("mensagem", msg);
         model.addAttribute("alerta", alert);
         msg = null;
@@ -34,8 +36,9 @@ public class BanhoController {
     }
 
     @PostMapping(value = "/servicos/banho/incluir")
-    public String create(Banho banho) {
-        banhoService.create(banho);
+    public String create(Banho banho, @SessionAttribute("user") Usuario usuario) {
+        banho.setUsuario(usuario);
+        banhoService.create(banho);  
         msg = "A inclusão do serviço '" + banho.getNome() + "' foi realizada com sucesso!";
         alert = "success";
 
@@ -57,7 +60,8 @@ public class BanhoController {
     }
 
     @PostMapping(value = "/servicos/banho/editar")
-    public String updated(Banho banho) {
+    public String updated(Banho banho,  @SessionAttribute("user") Usuario usuario) {
+        banho.setUsuario(usuario);
         banhoService.update(banho);
         msg = "As informações do serviço '" + banho.getNome() + "' foram atualizadas com sucesso!";
         alert = "success";
@@ -67,7 +71,8 @@ public class BanhoController {
 
     @GetMapping(value = "/servicos/banho/{id}/excluir")
     public String delete(@PathVariable Integer id) {
-        Banho banho = banhoService.delete(id);
+        Banho banho = banhoService.getById(id);
+        banhoService.delete(id);
         msg = "O serviço de '" + banho.getNome() + "' foi excluído!";
         alert = "danger";
 

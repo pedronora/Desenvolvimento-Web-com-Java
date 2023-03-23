@@ -71,7 +71,7 @@ pageEncoding="UTF-8"%>
         </div>
         <button type="submit" class="btn btn-dark me-2">Cadastrar</button>
         <a class="btn btn-dark" href="/pet">Voltar</a>
-      </form>      
+      </form>
     </main>
   </body>
 </html>

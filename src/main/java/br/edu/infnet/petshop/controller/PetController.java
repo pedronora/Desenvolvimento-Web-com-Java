@@ -27,7 +27,7 @@ public class PetController {
 
     @GetMapping(value = "/pet")
     public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
-        model.addAttribute("pets", petService.getAllById(usuario.getId()));
+        model.addAttribute("pets", petService.getAllByUsuario(usuario.getId()));
         model.addAttribute("mensagem", msg);
         model.addAttribute("alerta", alert);
         msg = null;

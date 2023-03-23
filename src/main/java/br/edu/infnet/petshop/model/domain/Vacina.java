@@ -1,14 +1,19 @@
 package br.edu.infnet.petshop.model.domain;
 
+import javax.persistence.Entity;
+
 import br.edu.infnet.petshop.model.exceptions.IllegalMinutesServiceException;
 import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
 import br.edu.infnet.petshop.model.exceptions.NoPriceException;
 
+@Entity
 public class Vacina extends Servico {
-    private Integer id = 0;
     private String tipo;
     private String marca;
     private float precoVacina;
+
+    public Vacina() {
+    }
 
     public Vacina(String nome, float preco, int tempoMinutos, String tipo, String marca, float precoVacina)
             throws InvalidFieldException, NoPriceException, IllegalMinutesServiceException {
@@ -21,14 +26,6 @@ public class Vacina extends Servico {
         this.tipo = tipo;
         this.marca = marca;
         this.precoVacina = precoVacina;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTipo() {

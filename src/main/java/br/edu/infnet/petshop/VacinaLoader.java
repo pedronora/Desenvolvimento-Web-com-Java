@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.model.domain.Vacina;
 import br.edu.infnet.petshop.service.VacinaService;
 
@@ -27,12 +28,16 @@ public class VacinaLoader implements ApplicationRunner {
             String linha = reader.readLine();
             String[] campos = null;
 
+            Usuario usuario = new Usuario();
+            usuario.setId(1);
+
             while (linha != null) {
                 campos = linha.split(";");
 
                 Vacina vacina = new Vacina(campos[0], Float.valueOf(campos[1]), Integer.valueOf(campos[2]), campos[3],
                         campos[4], Float.valueOf(campos[5]));
-
+                
+                vacina.setUsuario(usuario);
                 vacinaService.create(vacina);
                 linha = reader.readLine();
             }

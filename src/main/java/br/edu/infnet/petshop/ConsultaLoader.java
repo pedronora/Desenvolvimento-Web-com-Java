@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.petshop.model.domain.Consulta;
+import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.ConsultaService;
 
 @Component
@@ -29,13 +30,18 @@ public class ConsultaLoader implements ApplicationRunner {
             String linha = reader.readLine();
             String[] campos = null;
 
+            Usuario usuario = new Usuario();
+            usuario.setId(1);
+
             while (linha != null) {
                 campos = linha.split(";");
 
-                Consulta vacina = new Consulta(campos[0], Float.valueOf(campos[1]), Integer.valueOf(campos[2]),
+                Consulta consulta = new Consulta(campos[0], Float.valueOf(campos[1]), Integer.valueOf(campos[2]),
                         Boolean.valueOf(campos[3]), campos[4], campos[5]);
 
-                consultaService.create(vacina);
+                consulta.setUsuario(usuario);
+                
+                consultaService.create(consulta);
                 linha = reader.readLine();
             }
 

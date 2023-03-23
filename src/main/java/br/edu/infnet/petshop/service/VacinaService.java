@@ -14,23 +14,27 @@ public class VacinaService {
     @Autowired
     VacinaRepository vacinaRepository;
 
-    public Boolean create(Vacina vacina) {
-        return vacinaRepository.create(vacina);
+    public Vacina create(Vacina vacina) {
+        return vacinaRepository.save(vacina);
     }
 
     public Vacina getById(Integer id) {
-        return vacinaRepository.getById(id);
+        return vacinaRepository.findById(id).orElse(null);
     }
 
-    public Boolean update(Vacina vacina) {
-        return vacinaRepository.update(vacina);
+    public Vacina update(Vacina vacina) {
+        return vacinaRepository.save(vacina);
     }
 
-    public Vacina delete(Integer id) {
-        return vacinaRepository.delete(id);
+    public void delete(Integer id) {
+        vacinaRepository.deleteById(id);
     }
 
     public Collection<Vacina> getAll() {
-        return vacinaRepository.getAll();
+        return (Collection<Vacina>) vacinaRepository.findAll();
+    }
+
+    public Collection<Vacina> getAllByUsuario(Integer id) {
+        return vacinaRepository.findAllByUsuario(id);
     }
 }

@@ -18,10 +18,6 @@
       <c:import url="/WEB-INF/jsp/menu.jsp" />
       <main class="container rounded shadow my-4 p-4">
         <h1 class="mb-3">Lista de Serviços</h1>
-        <!-- <form action="/servicos/cadastro">
-            <button class="btn btn-dark mb-3" type="su
-            ">Cadastrar Serviço</button>
-        </form> -->
         <c:if test="${not empty mensagem}">
           <div class="alert alert-${alerta}" role="alert">
             ${mensagem}
@@ -51,9 +47,9 @@
                       <td>${servico.preco}</td>
                       <td>${servico.tempoMinutos}</td>
                       <td>
-                        <a class="btn btn-outline-secondary" href="/atendimento/${atendimento.id}/detalhes">Detalhes</a>
-                        <a class="btn btn-outline-info" href="/atendimento/${atendimento.id}/editar">Editar</a>
-                        <a class="btn btn-outline-danger" href="/atendimento/${atendimento.id}/excluir">Excluir</a>
+                        <a class="btn btn-outline-secondary" href="/servicos/${servico.id}/detalhes">Detalhes</a>
+                        <a class="btn btn-outline-info" href="/servicos/${servico.id}/editar">Editar</a>
+                        <a class="btn btn-outline-danger" href="/servicos/${servico.id}/excluir">Excluir</a>
                       </td>
                     </tr>
                   </c:forEach>
@@ -62,7 +58,8 @@
                   <tr>
                     <th scope="row"></th>
                     <th scope="row">Total</td>
-                    <th scope="row">${pets.size()}</td>
+                    <th scope="row">${servicos.size()}</td>
+                    <th scope="row"></th>
                     <th scope="row"></th>
                   </tr>
                 </tfoot>

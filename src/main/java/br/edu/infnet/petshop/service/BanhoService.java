@@ -14,23 +14,27 @@ public class BanhoService {
     @Autowired
     BanhoRepository banhoRepository;
 
-    public Boolean create(Banho banho) {
-        return banhoRepository.create(banho);
+    public Banho create(Banho banho) {
+        return banhoRepository.save(banho);
     }
 
     public Banho getById(Integer id) {
-        return banhoRepository.getById(id);
+        return banhoRepository.findById(id).orElse(null);
     }
 
-    public Boolean update(Banho banho) {
-        return banhoRepository.update(banho);
+    public Banho update(Banho banho) {
+        return banhoRepository.save(banho);
     }
 
-    public Banho delete(Integer id) {
-        return banhoRepository.delete(id);
+    public void delete(Integer id) {
+        banhoRepository.deleteById(id);
     }
 
     public Collection<Banho> getAll() {
-        return banhoRepository.getAll();
+        return (Collection<Banho>) banhoRepository.findAll();
+    }
+
+    public Collection<Banho> getAllByUsuario(Integer id) {
+        return (Collection<Banho>) banhoRepository.findAllByUsuario(id);
     }
 }

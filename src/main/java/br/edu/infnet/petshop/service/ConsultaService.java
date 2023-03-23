@@ -14,23 +14,26 @@ public class ConsultaService {
     @Autowired
     ConsultaRepository consultaRepository;
 
-    public Boolean create(Consulta consulta) {
-        return consultaRepository.create(consulta);
+    public Consulta create(Consulta consulta) {
+        return consultaRepository.save(consulta);
     }
 
     public Consulta getById(Integer id) {
-        return consultaRepository.getById(id);
+        return consultaRepository.findById(id).orElse(null);
     }
 
-    public Boolean update(Consulta consulta) {
-        return consultaRepository.update(consulta);
+    public Consulta update(Consulta consulta) {
+        return consultaRepository.save(consulta);
     }
 
-    public Consulta delete(Integer id) {
-        return consultaRepository.delete(id);
+    public void delete(Integer id) {
+        consultaRepository.deleteById(id);
     }
 
     public Collection<Consulta> getAll() {
-        return consultaRepository.getAll();
+        return (Collection<Consulta>) consultaRepository.findAll();
+    }
+    public Collection<Consulta> getAllByUsuario(Integer id) {
+        return (Collection<Consulta>) consultaRepository.findAllByUsuario(id);
     }
 }
