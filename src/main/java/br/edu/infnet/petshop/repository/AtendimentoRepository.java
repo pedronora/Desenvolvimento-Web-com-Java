@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import br.edu.infnet.petshop.model.domain.Atendimento;
 
 public interface AtendimentoRepository extends CrudRepository<Atendimento, Integer> {
-    @Query("from Atendimento a where a.usuario.id = id")
+    @Query("from Atendimento a where a.usuario.id = :id")
     List<Atendimento> findAllByUsuario(Integer id);
 }

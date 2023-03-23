@@ -1,7 +1,5 @@
 package br.edu.infnet.petshop.model.domain;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,7 +20,7 @@ public class Atendimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime data;
+    private String data;
     private String descricao;
     private boolean emergencia;
     @OneToOne(cascade = CascadeType.DETACH)
@@ -45,7 +43,38 @@ public class Atendimento {
         if (servicos == null) {
             throw new AtendimentoSemServicosException("Não existem Serviços associados ao Atendimento.");
         }
-        this.data = LocalDateTime.now();
+        this.pet = pet;
+        this.servicos = servicos;
+    }
+
+    public Atendimento(String data, String descricao, boolean emergencia, Pet pet, List<Servico> servicos,
+            Usuario usuario) throws AtendimentoSemPetException, AtendimentoSemServicosException {
+
+        if (pet == null) {
+            throw new AtendimentoSemPetException("Não existe Pet associada ao Atendimento.");
+        }
+        if (servicos == null) {
+            throw new AtendimentoSemServicosException("Não existem Serviços associados ao Atendimento.");
+        }
+
+        this.data = data;
+        this.descricao = descricao;
+        this.emergencia = emergencia;
+        this.pet = pet;
+        this.servicos = servicos;
+        this.usuario = usuario;
+    }
+
+    public Atendimento(String descricao, String data, Pet pet, List<Servico> servicos)
+            throws AtendimentoSemPetException, AtendimentoSemServicosException {
+        if (pet == null) {
+            throw new AtendimentoSemPetException("Não existe Pet associada ao Atendimento.");
+        }
+        if (servicos == null) {
+            throw new AtendimentoSemServicosException("Não existem Serviços associados ao Atendimento.");
+        }
+        this.data = data;
+        this.descricao = descricao;
         this.pet = pet;
         this.servicos = servicos;
     }
@@ -58,11 +87,11 @@ public class Atendimento {
         this.id = id;
     }
 
-    public LocalDateTime getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(LocalDateTime data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -108,9 +137,8 @@ public class Atendimento {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return String.format("%s;%s;%s",
-                data.format(formatter),
+                data,
                 descricao,
                 emergencia ? "Emergência" : "Normal");
     }
@@ -126,8 +154,7 @@ public class Atendimento {
     }
 
     public String obterLinha() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
-        return this.getData().format(formatter) + ";" +
+        return this.getData() + ";" +
                 this.getDescricao() + ";" +
                 this.getPet() + ";" +
                 this.getServicos().size() + "\r\n";

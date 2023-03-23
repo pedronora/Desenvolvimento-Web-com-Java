@@ -55,26 +55,30 @@ pageEncoding="UTF-8"%>
           </div>      
           <div class="col mb-3">
             <div class="col mb-3">
-              <label for="raca" class="form-label">Raça:</label>
-              <input type="text" class="form-control" id="raca" name="raca" placeholder="Insira a raça do pet" required>
+              <label for="pet" class="form-label">Pet</label>
+              <select id="pet" name="pet" class="form-select">
+                <c:forEach var="pet" items="${pets}">
+                  <option value="${pet.id}">${pet.nome}</option>
+                </c:forEach>
+              </select>
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col mb-3">
-            <label for="genero" class="form-label">Gênero:</label>
-            <select class="form-select" aria-label="selecao" name="genero">
-              <option value="F" selected>Fêmea</option>
-              <option value="M">Macho</option>
-            </select>
-          </div>       
+            <label for="servico" class="form-label">Serviços:</label>
+            <c:forEach var="servico" items="${servicos}">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="${servico.id}" id="flexCheckDefault" name="servicos">
+                <label class="form-check-label" for="flexCheckDefault">
+                  ${servico.nome}
+                </label>      
+              </div>
+          </c:forEach>
+          </div>
           <div class="col mb-3">
-            <label for="castrado" class="form-label">Castrado:</label>
-            <select class="form-select" aria-label="selecao" name="castrado">
-              <option value="false" selected>Não</option>
-              <option value="true">Sim</option>
-            </select>
+
           </div>    
         </div>
         <button type="submit" class="btn btn-dark me-2">Cadastrar</button>
