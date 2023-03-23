@@ -11,4 +11,5 @@ Aluno: Pedro Nora
     <li>Feature 5 - <a href="https://github.com/pedronora/Desenvolvimento-Web-com-Java/tree/Feature-5" target="_blank">Link</a></li>
     <li>Feature 6 - <a href="https://github.com/pedronora/Desenvolvimento-Web-com-Java/tree/Feature-6" target="_blank">Link</a></li>
     <li>Feature 7 - <a href="https://github.com/pedronora/Desenvolvimento-Web-com-Java/tree/Feature-7" target="_blank">Link</a></li>
+    <li>Feature 8 - <a href="https://github.com/pedronora/Desenvolvimento-Web-com-Java/tree/Feature-8" target="_blank">Link</a></li>
 </ul>
