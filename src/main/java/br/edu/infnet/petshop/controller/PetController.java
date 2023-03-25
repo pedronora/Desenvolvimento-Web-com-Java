@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.petshop.model.domain.Endereco;
 import br.edu.infnet.petshop.model.domain.Pet;
 import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.PetService;
@@ -36,7 +37,7 @@ public class PetController {
     }
 
     @PostMapping(value = "/pet/incluir")
-    public String create(Pet pet, @SessionAttribute("user") Usuario usuario) {
+    public String create(Pet pet, @SessionAttribute("user") Usuario usuario, Endereco endereco) {
         pet.setUsuario(usuario);
         petService.create(pet);
         msg = "A inclusão do pet '" + pet.getNome() + "' foi realizada com sucesso!";
@@ -60,7 +61,7 @@ public class PetController {
     }
 
     @PostMapping(value = "/pet/editar")
-    public String updated(Pet pet, @SessionAttribute("user") Usuario usuario) {
+    public String updated(Pet pet, @SessionAttribute("user") Usuario usuario, Endereco endereco) {
         pet.setUsuario(usuario);
         petService.update(pet);
         msg = "As informações do pet '" + pet.getNome() + "' foram atualizadas com sucesso!";

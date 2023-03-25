@@ -2,12 +2,14 @@ package br.edu.infnet.petshop.model.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -25,7 +27,10 @@ public class Usuario {
     private List<Servico> servicos; 
     @OneToMany
     @JoinColumn(name = "id_Usuario")
-    private List<Atendimento> atendimentos; 
+    private List<Atendimento> atendimentos;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_Endereco")
+    private Endereco endereco;
 
     public Usuario() {
     }
@@ -106,5 +111,11 @@ public class Usuario {
         this.atendimentos = atendimentos;
     }
 
-    
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }    
 }

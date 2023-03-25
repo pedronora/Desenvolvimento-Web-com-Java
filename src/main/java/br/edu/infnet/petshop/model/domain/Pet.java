@@ -1,11 +1,14 @@
 package br.edu.infnet.petshop.model.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import br.edu.infnet.petshop.model.exceptions.InvalidFieldException;
 
 @Entity
@@ -22,6 +25,9 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "id_Usuario")
     private Usuario usuario;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_Endereco")
+    private Endereco endereco;
 
     public Pet() {
 
@@ -108,6 +114,14 @@ public class Pet {
         if (field == null || field.isBlank()) {
             throw new InvalidFieldException("O campo [" + attr + "] não pode ser nulo/branco.");
         }
+    }
+    
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override

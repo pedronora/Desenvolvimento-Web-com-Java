@@ -72,8 +72,10 @@
                   value="${usuario.senha}"
                 />
             </div>
-
           </div>
+
+          <c:import url="/WEB-INF/jsp/endereco/cadastro.jsp" />
+          
           <button class="btn btn-dark mb-3" type="submit">Editar</button>
           <a class="btn btn-dark mb-3" href="/usuario/lista">Voltar</a>
         </form>

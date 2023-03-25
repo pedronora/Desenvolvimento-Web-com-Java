@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.edu.infnet.petshop.model.domain.Endereco;
 import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.UsuarioService;
 
@@ -34,7 +35,8 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/usuario/incluir")
-    public String create(Usuario usuario) {
+    public String create(Usuario usuario, Endereco endereco) {
+        usuario.setEndereco(endereco);
         usuarioService.create(usuario);
         msg = "A inclusão do usuário '" + usuario.getNome() + "' foi realizada com sucesso!";
         alert = "success";
@@ -57,7 +59,7 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/usuario/editar")
-    public String updated(Usuario usuario) {
+    public String updated(Usuario usuario, Endereco endereco) {
         usuarioService.update(usuario);
         msg = "As informações do usuario '" + usuario.getNome() + "' foram atualizadas com sucesso!";
         alert = "success";

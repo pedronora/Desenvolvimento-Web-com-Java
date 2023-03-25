@@ -24,6 +24,19 @@ pageEncoding="UTF-8"%>
     <c:import url="/WEB-INF/jsp/menu.jsp" />
     <main class="container rounded shadow my-4 p-4">
       <h1 class="mb-3">Cadastro de Pet</h1>
+
+      <form class="mb-3" action="/pet/cep" method="post">
+        <div class="row mb-3">
+          <div class="input-group col">
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-house"></i></span>
+            <input type="text" class="form-control" placeholder="Informe seu CEP" aria-label="cep" aria-describedby="basic-addon1" name="cep" value="${endereco.cep}" maxlength="9" required>
+          </div>
+          <div class="col-10">
+            <button class="btn btn-dark" type="submit">Buscar</button>
+          </div>
+        </div>
+      </form>
+
       <form action="/pet/incluir" method="post">
         <div class="row">
           <div class="col mb-3">
@@ -69,6 +82,9 @@ pageEncoding="UTF-8"%>
             </select>
           </div>    
         </div>
+
+        <c:import url="/WEB-INF/jsp/endereco/cadastro.jsp" />
+        
         <button type="submit" class="btn btn-dark me-2">Cadastrar</button>
         <a class="btn btn-dark" href="/pet">Voltar</a>
       </form>

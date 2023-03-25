@@ -23,7 +23,18 @@
     <c:import url="/WEB-INF/jsp/menu.jsp" />
     <main class="container rounded shadow my-4 p-4">
         <h1 class="mb-3">Cadastro de Usuário</h1>
-        <form action="/usuario/incluir" method="post">
+        <form class="mb-3" action="/usuario/cep" method="post">
+          <div class="row mb-3">
+            <div class="input-group col">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-house"></i></span>
+              <input type="text" class="form-control" placeholder="Informe seu CEP" aria-label="cep" aria-describedby="basic-addon1" name="cep" value="${endereco.cep}" maxlength="9" required>
+            </div>
+            <div class="col-10">
+              <button class="btn btn-dark" type="submit">Buscar</button>
+            </div>
+          </div>
+        </form>
+        <form class="mb3" action="/usuario/incluir" method="post">
           <div class="row mb-3">
             <div class="col">
               <label for="nome" class="form-label">Nome Completo:</label>
@@ -61,8 +72,10 @@
               />
             </div>
             <div class="col"></div>
-
           </div>
+
+          <c:import url="/WEB-INF/jsp/endereco/cadastro.jsp" />
+          
           <button class="btn btn-dark mb-3" type="submit">Cadastrar</button>
         </form>
       </main>

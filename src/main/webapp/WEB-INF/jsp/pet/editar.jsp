@@ -70,6 +70,9 @@ pageEncoding="UTF-8"%>
             </select>
           </div>    
         </div>
+
+        <c:import url="/WEB-INF/jsp/endereco/cadastro.jsp" />
+        
         <button type="submit" class="btn btn-dark me-2">Editar</button>
         <a class="btn btn-dark" href="/pet">Voltar</a>
       </form>      
