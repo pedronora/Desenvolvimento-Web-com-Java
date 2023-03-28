@@ -22,38 +22,42 @@ pageEncoding="UTF-8"%>
 
   <body>
     <c:import url="/WEB-INF/jsp/menu.jsp" />
-    <main class="container rounded shadow my-4 p-4">
-      <h1 class="mb-3">Login</h1>
-      <form action="/login" method="post">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email:</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="Informe o seu email"
-            required
-          />
+    <div class="row row-cols-1 row-cols-lg-3">
+      <div class="col"></div>
+      <main class="col rounded shadow my-4 p-4">
+        <h1 class="mb-3">Login</h1>
+        <form action="/login" method="post">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Informe o seu email"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="senha" class="form-label">Senha:</label>
+              <input
+                type="password"
+                class="form-control"
+                name="senha"
+                id="senha"
+                placeholder="Informe sua senha"
+                required
+              />
+            </div>
+          <button type="submit" class="btn btn-dark mb-3">Entrar</button>
+        </form>
+        <c:if test="${not empty mensagem}">
+        <div class="alert alert-danger mb-3" role="alert">
+          <strong>Atenção!</strong> ${mensagem}
         </div>
-        <div class="mb-3">
-          <label for="senha" class="form-label">Senha:</label>
-          <input
-            type="password"
-            class="form-control"
-            name="senha"
-            id="senha"
-            placeholder="Informe sua senha"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-dark mb-3">Entrar</button>
-      </form>
-      <c:if test="${not empty mensagem}">
-      <div class="alert alert-danger mb-3" role="alert">
-        <strong>Atenção!</strong> ${mensagem}
-      </div>
-      </c:if>
-    </main>
+        </c:if>
+      </main>
+      <div class="col"></div>
+    </div>
   </body>
 </html>

@@ -8,13 +8,13 @@
     </div>
     <div class="col-3">
         <label for="num" class="form-label">Número:</label>
-        <input type="number" class="form-control" id="num" name="num" required>
+        <input type="number" class="form-control" id="num" name="num" value="${endereco.num}" required>
     </div>
 </div>
 <div class="row mb-3">
     <div class="col">
         <label for="complemento" class="form-label">Complemento:</label>
-        <input type="text" class="form-control" id="complemento" name="complemento">
+        <input type="text" class="form-control" id="complemento" name="complemento" value="${endereco.complemento}">
     </div>
     <div class="col-3">
         <label for="bairro" class="form-label">Bairro:</label>

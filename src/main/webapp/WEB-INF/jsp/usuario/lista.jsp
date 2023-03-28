@@ -29,7 +29,7 @@
         <c:if test="${not empty usuarios}">
           <div class="row mb-3">
             <div class="table-responsive">
-              <table class="table table table-striped">
+              <table class="table table table-striped align-middle">
                 <thead>
                   <tr>
                     <th scope="col">#</th>

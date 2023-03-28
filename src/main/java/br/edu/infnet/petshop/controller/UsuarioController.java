@@ -38,9 +38,7 @@ public class UsuarioController {
     public String create(Usuario usuario, Endereco endereco) {
         usuario.setEndereco(endereco);
         usuarioService.create(usuario);
-        msg = "A inclusão do usuário '" + usuario.getNome() + "' foi realizada com sucesso!";
-        alert = "success";
-
+        
         return "redirect:/login";
     }
 
@@ -54,12 +52,15 @@ public class UsuarioController {
     @GetMapping(value = "/usuario/{id}/editar")
     public String update(Model model, @PathVariable Integer id) {
         Usuario usuario = usuarioService.getById(id);
+
         model.addAttribute("usuario", usuario);
+        model.addAttribute("endereco", usuario.getEndereco());
         return "usuario/editar";
     }
 
     @PostMapping(value = "/usuario/editar")
     public String updated(Usuario usuario, Endereco endereco) {
+        usuario.setEndereco(endereco);
         usuarioService.update(usuario);
         msg = "As informações do usuario '" + usuario.getNome() + "' foram atualizadas com sucesso!";
         alert = "success";
