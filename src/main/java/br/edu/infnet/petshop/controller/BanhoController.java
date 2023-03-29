@@ -72,9 +72,16 @@ public class BanhoController {
     @GetMapping(value = "/servicos/banho/{id}/excluir")
     public String delete(@PathVariable Integer id) {
         Banho banho = banhoService.getById(id);
-        banhoService.delete(id);
-        msg = "O serviço de '" + banho.getNome() + "' foi excluído!";
         alert = "danger";
+
+        try {
+            banhoService.delete(id);
+            msg = "O serviço de '" + banho.getNome() + "' foi excluído!";
+            
+        } catch (Exception e) {
+            msg = "O servico de '" + banho.getNome() +"' está associado a um atendimento! Não é possível excluí-lo!" ;
+            System.out.println(e.getMessage());
+        }
 
         return "redirect:/servicos/banho";
     }

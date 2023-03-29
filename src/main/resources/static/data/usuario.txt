@@ -1,5 +1,5 @@
-Usuario1;usuario1@exemplo.com.br;12345
-Usuario2;usuario2@exemplo.com.br;12345
-Usuario3;usuario3@exemplo.com.br;12345
-Usuario4;usuario4@exemplo.com.br;12345
-Usuario5;usuario5@exemplo.com.br;12345
+Usuario1;usuario1@exemplo.com;12345
+Usuario2;usuario2@exemplo.com;12345
+Usuario3;usuario3@exemplo.com;12345
+Usuario4;usuario4@exemplo.com;12345
+Usuario5;usuario5@exemplo.com;12345

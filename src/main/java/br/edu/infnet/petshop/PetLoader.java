@@ -32,13 +32,15 @@ public class PetLoader implements ApplicationRunner {
             String[] campos = null;
 
             Usuario novoUsuario = new Usuario();
-            novoUsuario.setId(1);
+            
+            int n = 1;
 
             while (linha != null) {
             campos = linha.split(";");
 
             Pet pet = new Pet(campos[0], campos[1],
             campos[2], campos[3],campos[4].charAt(0), Boolean.valueOf(campos[5]));
+            novoUsuario.setId(n++);
             pet.setUsuario(novoUsuario);
 
             petService.create(pet);

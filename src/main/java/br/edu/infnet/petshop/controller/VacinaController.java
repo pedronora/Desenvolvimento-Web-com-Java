@@ -36,7 +36,7 @@ public class VacinaController {
     }
 
     @PostMapping(value = "/servicos/vacina/incluir")
-    public String create(Vacina vacina,  @SessionAttribute("user") Usuario usuario) {
+    public String create(Vacina vacina, @SessionAttribute("user") Usuario usuario) {
         vacina.setUsuario(usuario);
         vacinaService.create(vacina);
         msg = "A inclusão do serviço '" + vacina.getNome() + "' foi realizada com sucesso!";
@@ -60,7 +60,7 @@ public class VacinaController {
     }
 
     @PostMapping(value = "/servicos/vacina/editar")
-    public String updated(Vacina vacina,  @SessionAttribute("user") Usuario usuario) {
+    public String updated(Vacina vacina, @SessionAttribute("user") Usuario usuario) {
         vacina.setUsuario(usuario);
         vacinaService.update(vacina);
         msg = "As informações do serviço '" + vacina.getNome() + "' foram atualizadas com sucesso!";
@@ -72,9 +72,15 @@ public class VacinaController {
     @GetMapping(value = "/servicos/vacina/{id}/excluir")
     public String delete(@PathVariable Integer id) {
         Vacina vacina = vacinaService.getById(id);
-        vacinaService.delete(id);
-        msg = "O serviço de '" + vacina.getNome() + "' foi excluído!";
         alert = "danger";
+
+        try {
+            vacinaService.delete(id);
+            msg = "O serviço de '" + vacina.getNome() + "' foi excluído!";
+        } catch (Exception e) {
+            msg = "A vacina '" + vacina.getNome() +"' está associada a um atendimento! Não é possível excluí-la!";
+            System.out.println(e.getMessage());
+        }
 
         return "redirect:/servicos/vacina";
     }

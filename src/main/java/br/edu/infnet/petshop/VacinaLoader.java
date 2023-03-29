@@ -29,15 +29,17 @@ public class VacinaLoader implements ApplicationRunner {
             String[] campos = null;
 
             Usuario usuario = new Usuario();
-            usuario.setId(1);
+            int n = 1;
 
             while (linha != null) {
                 campos = linha.split(";");
 
                 Vacina vacina = new Vacina(campos[0], Float.valueOf(campos[1]), Integer.valueOf(campos[2]), campos[3],
                         campos[4], Float.valueOf(campos[5]));
-                
+
+                usuario.setId(n++);
                 vacina.setUsuario(usuario);
+        
                 vacinaService.create(vacina);
                 linha = reader.readLine();
             }

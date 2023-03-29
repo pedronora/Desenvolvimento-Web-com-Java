@@ -24,36 +24,39 @@
 
         <section class="text-center rounded shadow p-4">
           <c:if test="${empty user}">
-            <h2 class="mb-3">Seja Bem-Vindo!</h2>
-            <h3 class="mb-3">Utilize o menu para realizar seu cadastro e/ou entrar!</h3>
+            <h2>Instituto Infnet</h2>
+            <h3>Desenvolvimento Web com Java</h3>
+            <h4>Prof.: Elberth Lins Costa de Moraes</h4>
+  
+            <h5>Aluno: Pedro Nora</h5>
           </c:if>
 
           <c:if test="${not empty user}">
-          <div class="mb-3">
-            <h2>Menu:</h2>
-          </div>
-          <div class="row mb-3">
-            <div class="col">
-              <a class="btn btn-dark" href="/atendimento">Atendimentos</a>
+            <div class="mb-3">
+              <h2>Menu:</h2>
             </div>
-            <div class="col">
-              <a class="btn btn-dark" href="/pet">Pets</a>
+            <div class="row mb-3">
+              <div class="col">
+                <a class="btn btn-dark" href="/atendimento">Atendimentos</a>
+              </div>
+              <div class="col">
+                <a class="btn btn-dark" href="/pet">Pets</a>
+              </div>
+              <div class="col">
+                <a class="btn btn-dark" href="/servicos">Serviços</a>
+              </div>
             </div>
-            <div class="col">
-              <a class="btn btn-dark" href="/servicos">Serviços</a>
+            <div class="row mb-3">
+              <div class="col">
+                <a class="btn btn-dark" href="/servicos/consulta">Consultas</a>
+              </div>
+              <div class="col">
+                <a class="btn btn-dark" href="/servicos/banho">Banhos</a>
+              </div>
+              <div class="col">
+                <a class="btn btn-dark" href="/servicos/vacina">Vacinas</a>
+              </div>
             </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col">
-              <a class="btn btn-dark" href="/servicos/consulta">Consultas</a>
-            </div>
-            <div class="col">
-              <a class="btn btn-dark" href="/servicos/banho">Banhos</a>
-            </div>
-            <div class="col">
-              <a class="btn btn-dark" href="/servicos/vacina">Vacinas</a>
-            </div>
-          </div>
           </c:if>
         </section>
 

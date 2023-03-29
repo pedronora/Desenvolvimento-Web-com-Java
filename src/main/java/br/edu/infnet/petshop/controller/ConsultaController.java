@@ -72,9 +72,15 @@ public class ConsultaController {
     @GetMapping(value = "/servicos/consulta/{id}/excluir")
     public String delete(@PathVariable Integer id) {
         Consulta consulta = consultaService.getById(id);
-        consultaService.delete(id);
-        msg = "O serviço de '" + consulta.getNome() + "' foi excluído!";
         alert = "danger";
+
+        try {
+            consultaService.delete(id);
+            msg = "O serviço de '" + consulta.getNome() + "' foi excluído!";
+        } catch (Exception e) {
+            msg = "A consulta '" + consulta.getNome() +"' está associada a um atendimento! Não é possível excluí-la!";
+            System.out.println(e.getMessage());
+        }
 
         return "redirect:/servicos/consulta";
     }

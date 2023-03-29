@@ -47,8 +47,8 @@
                       <td>${servico.preco}</td>
                       <td>${servico.tempoMinutos}</td>
                       <td>
-                        <a class="btn btn-outline-secondary" href="/servicos/${servico.id}/detalhes">Detalhes</a>
-                        <a class="btn btn-outline-info" href="/servicos/${servico.id}/editar">Editar</a>
+                        <!-- <a class="btn btn-outline-secondary" href="/servicos/${servico.id}/detalhes">Detalhes</a>
+                        <a class="btn btn-outline-info" href="/servicos/${servico.id}/editar">Editar</a> -->
                         <a class="btn btn-outline-danger" href="/servicos/${servico.id}/excluir">Excluir</a>
                       </td>
                     </tr>

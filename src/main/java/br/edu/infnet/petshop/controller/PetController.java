@@ -73,9 +73,16 @@ public class PetController {
     @GetMapping(value = "/pet/{id}/excluir")
     public String delete(@PathVariable Integer id) {
         Pet pet = petService.getById(id);
-        petService.delete(id);
-        msg = "O pet '" + pet.getNome() + "' foi excluído!";
         alert = "danger";
+
+        try {
+            petService.delete(id);
+            msg = "O pet '" + pet.getNome() + "' foi excluído!";
+        } catch (Exception e) {
+            msg = "O pet '" + pet.getNome() + "' está associado a um atendimento e não pode ser excluído!";
+        }
+
+
 
         return "redirect:/pet";
     }

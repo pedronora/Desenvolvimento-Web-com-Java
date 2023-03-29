@@ -31,7 +31,7 @@ public class ConsultaLoader implements ApplicationRunner {
             String[] campos = null;
 
             Usuario usuario = new Usuario();
-            usuario.setId(1);
+            int n = 1;
 
             while (linha != null) {
                 campos = linha.split(";");
@@ -39,8 +39,9 @@ public class ConsultaLoader implements ApplicationRunner {
                 Consulta consulta = new Consulta(campos[0], Float.valueOf(campos[1]), Integer.valueOf(campos[2]),
                         Boolean.valueOf(campos[3]), campos[4], campos[5]);
 
+                usuario.setId(n++);
                 consulta.setUsuario(usuario);
-                
+
                 consultaService.create(consulta);
                 linha = reader.readLine();
             }

@@ -64,16 +64,18 @@ public class AtendimentoController {
     }
 
     @GetMapping(value = "/atendimento/{id}/editar")
-    public String editar(Model model, @PathVariable Integer id) {
+    public String editar(Model model, @PathVariable Integer id, @SessionAttribute("user") Usuario usuario) {
         Atendimento atendimento = atendimentoService.getById(id);
         model.addAttribute("atendimento", atendimento);
+        model.addAttribute("pets", petService.getAllByUsuario(usuario.getId()));
+        model.addAttribute("servicos", servicoService.getAllByUsuario(usuario.getId()));
         return "/atendimento/editar";
     }
 
     @PostMapping(value = "/atendimento/editar")
     public String editado(Atendimento atendimento, @SessionAttribute("user") Usuario usuario) {
         atendimento.setUsuario(usuario);
-        atendimentoService.update(atendimento);
+        System.out.println(atendimento);
         msg = "As informações do '" + atendimento.getDescricao() + "' foram atualizadas com sucesso!";
         alert = "success";
 

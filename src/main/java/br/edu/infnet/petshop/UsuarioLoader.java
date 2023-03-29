@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.petshop.model.domain.Endereco;
 import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.UsuarioService;
 
@@ -23,7 +24,11 @@ public class UsuarioLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Usuario admin = new Usuario("Adminisrador", "admin@admin.com", "12345");
+        Endereco endereco1 = new Endereco("88015-905", "Rua Esteves Jr", "395", "Sala 610", "Centro", "Florianópolis", "SC");
+
+        Usuario admin = new Usuario("Administrador", "admin@admin.com", "12345");
+        admin.setAdmin(true);
+        admin.setEndereco(endereco1);
 
         usuarioService.create(admin);
         System.out.println("Administrador criado!\nLogin: "+ admin.getEmail() + "\nSenha: " + admin.getSenha() + "\n");
@@ -40,6 +45,11 @@ public class UsuarioLoader implements ApplicationRunner {
 
                 Usuario usuario = new Usuario(campos[1],campos[2]);
                 usuario.setNome(campos[0]);
+                usuario.setAdmin(false);
+
+                Endereco endereco2 = new Endereco("20010-020", "Rua São José", "90", "", "Centro", "Rio de Janeiro", "RJ");
+
+                usuario.setEndereco(endereco2);
 
                 usuarioService.create(usuario);
                 linha = reader.readLine();

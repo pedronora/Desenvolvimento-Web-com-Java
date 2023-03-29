@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.petshop.model.domain.Endereco;
 import br.edu.infnet.petshop.model.domain.Usuario;
@@ -25,8 +26,9 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/usuario/lista")
-    public String telaLista(Model model) {
+    public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
         model.addAttribute("usuarios", usuarioService.getAll());
+        model.addAttribute("user", usuario);
         model.addAttribute("mensagem", msg);
         model.addAttribute("alerta", alert);
         msg = null;

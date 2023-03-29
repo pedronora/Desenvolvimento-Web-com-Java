@@ -11,41 +11,47 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
       <meta charset="UTF-8" />
-      <title>Cadastro de Atendimento</title>
+      <title>Detalhes do Atendimento</title>
     </head>
 
     <body>
-      <c:set var="disabledPets" value="" />
-      <c:set var="disabledServicos" value="" />
       <c:import url="/WEB-INF/jsp/menu.jsp" />
       <main class="container rounded shadow my-4 p-4">
-        <h1 class="mb-3">Cadastro de Atendimento</h1>
+        <h1 class="mb-3">Detalhes do Atendimento</h1>
 
         <form action="/atendimento/incluir" method="post">
           <div class="row">
             <div class="col mb-3">
               <label for="data" class="form-label">Data:</label>
-              <input type="date" class="form-control" id="data" name="data" placeholder="Informe a data do atendimento"
-                required>
+              <input type="date" class="form-control" id="data" name="data" value="${atendimento.data}"
+                disabled>
             </div>
             <div class="col mb-3">
               <label for="descricao" class="form-label">Descrição:</label>
               <input type="text" class="form-control" id="nome" name="descricao"
-                placeholder="Insira a descrição do atendimento" required>
+                value="${atendimento.descricao}" disabled>
             </div>
           </div>
 
           <div class="row">
             <div class="col mb-3">
+                <c:choose>
+                    <c:when test="${atendimento.emergencia}">
+                        <c:set var="checkTrue" value="checked" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="checkFalse" value="checked" />
+                    </c:otherwise>
+                </c:choose>
               <label class="form-label">Emergência?</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" value="true">
+                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" ${checkTrue}>
                 <label class="form-check-label" for="flexRadio">
                   Sim
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" value="false" checked>
+                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" ${checkFalse}>
                 <label class="form-check-label" for="flexRadio">
                   Não
                 </label>
@@ -53,21 +59,9 @@
             </div>
             <div class="col mb-3">
               <div class="col mb-3">
-
-                <c:if test="${empty pets}">
-                  <c:set var="disabledPets" value="disabled" />
-                </c:if>
-
                 <label for="pet" class="form-label">Pet</label>
-                <select id="pet" name="pet" class="form-select" ${disabledPets}>
-                  <c:if test="${not empty pets}">
-                    <c:forEach var="pet" items="${pets}">
-                      <option value="${pet.id}">${pet.nome}</option>
-                    </c:forEach>
-                  </c:if>
-                  <c:if test="${empty pets}">
-                    <option value=null>Não há pets cadastrados</option>
-                  </c:if>
+                <select id="pet" name="pet" class="form-select" disabled>
+                    <option>${atendimento.pet.nome}</option>
                 </select>
               </div>
             </div>
@@ -75,31 +69,17 @@
 
           <div class="row">
             <div class="col mb-3">
-              <c:if test="${empty servicos}">
-                <c:set var="disabledServicos" value="disabled" />
-              </c:if>
               <label for="servico" class="form-label">Serviços:</label>
-              <select id="servico" name="servicos" multiple class="form-select" ${disabledServicos}>
-                <c:if test="${not empty servicos}">
-                  <c:forEach var="servico" items="${servicos}">
+              <select id="servico" name="servicos" multiple class="form-select" disabled>
+                  <c:forEach var="servico" items="${atendimento.servicos}">
                     <option value="${servico.id}">${servico.nome}</option>
                   </c:forEach>
-                </c:if>
-                <c:if test="${empty servicos}">
-                  <option value=null>Não há serviços cadastrados</option>
-                </c:if>
               </select>
-              <div class="form-text">Mantenha pressionada a tecla 'Ctrl' para selecionar mais de um serviço.</div>
             </div>
 
             <div class="col mb-3"></div>
           </div>
 
-          <c:if test="${not empty disabledServicos or not empty disabledPets}">
-            <c:set var="botao" value="disabled" />
-          </c:if>
-
-          <button type="submit" class="btn btn-dark me-2" ${botao}>Cadastrar</button>
           <a class="btn btn-dark" href="/atendimento">Voltar</a>
         </form>
 

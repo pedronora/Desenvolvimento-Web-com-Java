@@ -3,6 +3,8 @@ package br.edu.infnet.petshop.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.petshop.model.domain.Banho;
@@ -35,6 +37,10 @@ public class BanhoService {
     }
 
     public Collection<Banho> getAllByUsuario(Integer id) {
-        return (Collection<Banho>) banhoRepository.findAllByUsuario(id);
+        return (Collection<Banho>) banhoRepository.findAllByUsuario(id, Sort.by(Direction.DESC, "nome"));
+    }
+
+    public long count() {
+        return banhoRepository.count();
     }
 }

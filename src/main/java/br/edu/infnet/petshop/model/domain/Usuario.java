@@ -19,15 +19,20 @@ public class Usuario {
     private String nome;
     private String senha;
     private String email;
-    @OneToMany
+    private boolean admin;
+
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "id_Usuario")
-    private List<Pet> pets; 
-    @OneToMany
+    private List<Pet> pets;
+
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "id_Usuario")
-    private List<Servico> servicos; 
-    @OneToMany
+    private List<Servico> servicos;
+
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "id_Usuario")
     private List<Atendimento> atendimentos;
+    
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_Endereco")
     private Endereco endereco;
@@ -87,6 +92,15 @@ public class Usuario {
         this.email = email;
     }
 
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }    
+
     public List<Pet> getPets() {
         return pets;
     }
@@ -117,5 +131,5 @@ public class Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }    
+    }
 }

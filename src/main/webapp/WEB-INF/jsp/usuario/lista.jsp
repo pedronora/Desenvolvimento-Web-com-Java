@@ -6,7 +6,7 @@
     <head>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
@@ -33,10 +33,13 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome Completo</th>
+                    <th scope="col">Nome</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Qtd. Pets</th>
-                    <th scope="col">Qtd. Serviços</th>
+                    <th scope="col">Pets</th>
+                    <th scope="col">Serviços</th>
+                    <th scope="col">Atendimentos</th>
+                    <th scope="col">Admin?</th>
+                    <th scope="col">Endereço</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -48,10 +51,21 @@
                       <td>${usuario.email}</td>
                       <td>${usuario.pets.size()}</td>
                       <td>${usuario.servicos.size()}</td>
+                      <td>${usuario.atendimentos.size()}</td>
+                      <td>
+                        <c:if test="${usuario.admin}">Sim</c:if>
+                        <c:if test="${!usuario.admin}">Não</c:if>
+                      </td>
+                      <td>${usuario.endereco}</td>
                       <td>
                         <a class="btn btn-outline-secondary" href="/usuario/${usuario.id}/detalhes">Detalhes</a>
-                        <a class="btn btn-outline-info" href="/usuario/${usuario.id}/editar">Editar</a>
-                        <a class="btn btn-outline-danger" href="/usuario/${usuario.id}/excluir">Excluir</a>
+                        <c:if test="${user.admin or (user.id == usuario.id)}">
+                          <a class="btn btn-outline-info" href="/usuario/${usuario.id}/editar">Editar</a>
+                        </c:if>
+                        <c:if test="${user.admin and (user.id != usuario.id)}">
+                          <a class="btn btn-outline-danger" href="/usuario/${usuario.id}/excluir">Excluir</a>
+                        </c:if>
+
                       </td>
                     </tr>
                   </c:forEach>
@@ -61,6 +75,10 @@
                     <th scope="row"></th>
                     <th scope="row">Total</td>
                     <th scope="row">${usuarios.size()}</td>
+                    <th scope="row"></th>
+                    <th scope="row"></th>
+                    <th scope="row"></th>
+                    <th scope="row"></th>
                     <th scope="row"></th>
                     <th scope="row"></th>
                   </tr>

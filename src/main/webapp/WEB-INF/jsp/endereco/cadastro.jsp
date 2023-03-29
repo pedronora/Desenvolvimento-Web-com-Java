@@ -7,14 +7,14 @@
         <input type="text" class="form-control" id="logradouro" name="logradouro" value="${endereco.logradouro}" readonly>
     </div>
     <div class="col-3">
-        <label for="num" class="form-label">Número:</label>
-        <input type="number" class="form-control" id="num" name="num" value="${endereco.num}" required>
+        <label for="complemento" class="form-label">Número:</label>
+        <input type="text" class="form-control" id="complemento" name="complemento" value="${endereco.complemento}" required>
     </div>
 </div>
 <div class="row mb-3">
     <div class="col">
-        <label for="complemento" class="form-label">Complemento:</label>
-        <input type="text" class="form-control" id="complemento" name="complemento" value="${endereco.complemento}">
+        <label for="complemento2" class="form-label">Complemento:</label>
+        <input type="text" class="form-control" id="complemento2" name="complemento2" value="${endereco.complemento2}">
     </div>
     <div class="col-3">
         <label for="bairro" class="form-label">Bairro:</label>

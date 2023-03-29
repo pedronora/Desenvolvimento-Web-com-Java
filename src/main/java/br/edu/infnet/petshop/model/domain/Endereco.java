@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.lang.Nullable;
-
 @Entity
 public class Endereco {
     @Id
@@ -14,14 +12,24 @@ public class Endereco {
     private Integer id;
     private String cep;
     private String logradouro;
-    private String num;
-    @Nullable
     private String complemento;
+    private String complemento2;
     private String bairro;
     private String localidade;
     private String uf;
 
     public Endereco() {
+    }
+
+    public Endereco(String cep, String logradouro, String complemento, String complemento2, String bairro,
+            String localidade, String uf) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.complemento2 = complemento2;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
     }
 
     public Integer getId() {
@@ -48,21 +56,20 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    
-    public String getNum() {
-        return num;
-    }
-
-    public void setNum(String num) {
-        this.num = num;
-    }
-
     public String getComplemento() {
         return complemento;
     }
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public String getComplemento2() {
+        return complemento2;
+    }
+
+    public void setComplemento2(String complemento2) {
+        this.complemento2 = complemento2;
     }
 
     public String getBairro() {
@@ -87,5 +94,11 @@ public class Endereco {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    @Override
+    public String toString() {
+        return logradouro + ", " + complemento + " " + complemento2 + bairro + ", " + localidade + "/" + uf
+                + " CEP: " + cep;
     }
 }
