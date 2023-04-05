@@ -5,12 +5,14 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.petshop.model.domain.Consulta;
 import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.ConsultaService;
 
+@Order(4)
 @Component
 public class ConsultaLoader implements ApplicationRunner {
 

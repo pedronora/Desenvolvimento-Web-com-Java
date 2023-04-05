@@ -35,6 +35,12 @@ public class Atendimento {
     public Atendimento() {
     }
 
+    public Atendimento(String data, String descricao, boolean emergencia) {
+        this.data = data;
+        this.descricao = descricao;
+        this.emergencia = emergencia;
+    }
+
     public Atendimento(Pet pet, List<Servico> servicos)
             throws AtendimentoSemPetException, AtendimentoSemServicosException {
         if (pet == null) {

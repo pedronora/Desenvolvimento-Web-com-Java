@@ -60,7 +60,7 @@
                       <td>
                         <a class="btn btn-outline-secondary" href="/usuario/${usuario.id}/detalhes">Detalhes</a>
                         <c:if test="${user.admin or (user.id == usuario.id)}">
-                          <a class="btn btn-outline-info" href="/usuario/${usuario.id}/editar">Editar</a>
+                          <c:if test="${usuario.pets.size() != 0 and usuario.servicos.size() != 0 and usuario.atendimentos.size() != 0}"><a class="btn btn-outline-info" href="/usuario/${usuario.id}/editar">Editar</a></c:if>
                         </c:if>
                         <c:if test="${user.admin and (user.id != usuario.id)}">
                           <a class="btn btn-outline-danger" href="/usuario/${usuario.id}/excluir">Excluir</a>

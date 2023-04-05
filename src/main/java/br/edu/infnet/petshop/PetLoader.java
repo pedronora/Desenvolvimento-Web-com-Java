@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.petshop.model.domain.Endereco;
 import br.edu.infnet.petshop.model.domain.Pet;
 import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.PetService;
@@ -36,12 +37,16 @@ public class PetLoader implements ApplicationRunner {
             int n = 1;
 
             while (linha != null) {
+
+            Endereco endereco = new Endereco("20010-020", "Rua São José", "90", "", "Centro", "Rio de Janeiro", "RJ");
+            
             campos = linha.split(";");
 
             Pet pet = new Pet(campos[0], campos[1],
             campos[2], campos[3],campos[4].charAt(0), Boolean.valueOf(campos[5]));
             novoUsuario.setId(n++);
             pet.setUsuario(novoUsuario);
+            pet.setEndereco(endereco);
 
             petService.create(pet);
             linha = reader.readLine();

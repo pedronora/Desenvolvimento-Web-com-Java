@@ -5,12 +5,14 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.petshop.model.domain.Banho;
 import br.edu.infnet.petshop.model.domain.Usuario;
 import br.edu.infnet.petshop.service.BanhoService;
 
+@Order(3)
 @Component
 public class BanhoLoader implements ApplicationRunner {
 

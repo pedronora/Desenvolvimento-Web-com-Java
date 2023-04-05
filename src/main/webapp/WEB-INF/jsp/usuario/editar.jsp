@@ -24,6 +24,22 @@
     <main class="container rounded shadow my-4 p-4">
         <h1 class="mb-3">Editar Usuário</h1>
         <form action="/usuario/editar" method="post">
+          <select name="atendimentos" multiple id="atendimentos" hidden>
+            <c:forEach var="atendimento" items="${usuario.atendimentos}">
+              <option value="${atendimento.id}" selected>atendimento</option>
+            </c:forEach>
+          </select>
+          <select name="pets" multiple id="pets" hidden>
+            <c:forEach var="pet" items="${usuario.pets}">
+              <option value="${pet.id}" selected>pet</option>
+            </c:forEach>
+          </select>
+          <select name="servicos" multiple id="servicos" hidden>
+            <c:forEach var="servico" items="${usuario.servicos}">
+              <option value="${servico.id}" selected>servico</option>
+            </c:forEach>
+          </select>
+
           <div class="row mb-3">
             <div class="col">
               <label for="id" class="form-label">Id:</label>

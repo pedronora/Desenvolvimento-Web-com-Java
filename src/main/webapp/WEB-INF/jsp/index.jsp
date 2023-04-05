@@ -32,6 +32,9 @@
           </c:if>
 
           <c:if test="${not empty user}">
+            <div class="text-start mb-3">
+              <p class="fs-4"><strong>Usuário logado:</strong> ${user.nome}<p>
+            </div>
             <div class="mb-3">
               <h2>Menu:</h2>
             </div>

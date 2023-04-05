@@ -45,13 +45,13 @@
                 </c:choose>
               <label class="form-label">Emergência?</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" ${checkTrue}>
+                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" ${checkTrue} disabled>
                 <label class="form-check-label" for="flexRadio">
                   Sim
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" ${checkFalse}>
+                <input class="form-check-input" type="radio" name="emergencia" id="flexRadio" ${checkFalse} disabled>
                 <label class="form-check-label" for="flexRadio">
                   Não
                 </label>

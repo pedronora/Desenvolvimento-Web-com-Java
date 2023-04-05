@@ -75,7 +75,7 @@ public class AtendimentoController {
     @PostMapping(value = "/atendimento/editar")
     public String editado(Atendimento atendimento, @SessionAttribute("user") Usuario usuario) {
         atendimento.setUsuario(usuario);
-        System.out.println(atendimento);
+        atendimentoService.update(atendimento);
         msg = "As informações do '" + atendimento.getDescricao() + "' foram atualizadas com sucesso!";
         alert = "success";
 

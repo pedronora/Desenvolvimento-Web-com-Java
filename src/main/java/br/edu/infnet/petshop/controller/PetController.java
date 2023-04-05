@@ -57,6 +57,7 @@ public class PetController {
     public String update(Model model, @PathVariable Integer id) {
         Pet pet = petService.getById(id);
         model.addAttribute("pet", pet);
+        model.addAttribute("endereco", pet.getEndereco());
         return "/pet/editar";
     }
 
